@@ -1,0 +1,17 @@
+<template>
+    <template if:true={opptyData}>
+        <lightning-layout>
+            <lightning-layout-item>
+              <div class="slds-text-heading_medium slds-align_absolute-center">
+                Opportunities
+              </div>
+              <dl class="slds-align_absolute-center">
+                  <dt class="">Open Opportunities: {numOpenOppties}</dt>
+              </dl>
+              <dl class="slds-align_absolute-center">
+                <dt class="">Won Opportunities {numWonOppties}</dt>
+            </dl>            </lightning-layout-item>
+        </lightning-layout>
+    </template>
+    <template if:true={error}> Error: {error.body.message} </template>
+  </template>
