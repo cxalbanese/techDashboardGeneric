@@ -12,7 +12,6 @@ export default class getOppties extends LightningElement {
     dataRecord({data, error}){
        if(data){
             this.opptyData = data;
-            refreshApex(this.getOpptyList);
        }
        else if(error){
            this.errorData = error;

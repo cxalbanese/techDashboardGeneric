@@ -10,7 +10,6 @@ export default class getSAs extends LightningElement {
     dataRecord({data, error}){
         if(data){
             this.saData = data;
-            refreshApex(this.getSAList);
         }
         else if(error){
             this.errorData = error;
