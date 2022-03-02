@@ -1,0 +1,20 @@
+<template>
+    <template if:true={srData}>
+      <lightning-card title="User" icon-name="standard:service_resource">
+        <lightning-layout>
+            <lightning-layout-item>
+              <dl class="slds-align_absolute-center">
+                  <dt>User Name: {techName}</dt>
+              </dl>
+              <dl class="slds-align_absolute-center">
+                <dt>Last Location Date:&nbsp;
+                    <lightning-formatted-date-time value={techLastDate} year="2-digit" month="short" day="2-digit" hour="numeric"
+                    minute="numeric" weekday="long"></lightning-formatted-date-time>                    
+                    </dt>
+            </dl>
+            </lightning-layout-item>
+        </lightning-layout>
+      </lightning-card>
+    </template>
+    <template if:true={error}> Error: {error.body.message} </template>
+  </template>
