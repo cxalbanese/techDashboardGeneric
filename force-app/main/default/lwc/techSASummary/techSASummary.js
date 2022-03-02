@@ -8,17 +8,14 @@ export default class getSAs extends LightningElement {
     @track errorData;
     @wire(getSAList,{userId : techId})
     dataRecord({data, error}){
-       if(data){
-           this.saData = data;
-       }
-       else if(error){
-           this.errorData = error;
-       }
-     }
-     handler() {
-        refreshApex(this.getSAList);
-      }
-
+        if(data){
+            this.saData = data;
+            refreshApex(this.getSAList);
+        }
+        else if(error){
+            this.errorData = error;
+        }
+    }
     get numOpenSAs() {
         return this.saData.length;
     }   

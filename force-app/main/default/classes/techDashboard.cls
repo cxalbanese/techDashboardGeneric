@@ -8,7 +8,8 @@ public with sharing class techDashboard {
     @AuraEnabled(cacheable=true)
     public static List<ServiceAppointment> getSAInfo(string userId) {
        // system.debug('heres the parm ' + userId);
-        return [SELECT ID, AppointmentNumber, Status, ParentRecordId,SchedStartTime,SchedEndTime,Duration from ServiceAppointment where StatusCategory in ('Scheduled','Dispatched','InProgress') and Id in (select serviceappointmentid from assignedresource where serviceresourceid = :userId) LIMIT :rowLimit];
+        string serviceResourceId = [select id from serviceresource where relatedrecordid = :userId].id;
+        return [SELECT ID, AppointmentNumber, Status, ParentRecordId,SchedStartTime,SchedEndTime,Duration from ServiceAppointment where StatusCategory in ('Scheduled','Dispatched','InProgress') and Id in (select serviceappointmentid from assignedresource where serviceresourceid = :serviceResourceId) LIMIT :rowLimit];
     }    
     
 }

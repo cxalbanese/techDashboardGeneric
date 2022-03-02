@@ -11,15 +11,13 @@ export default class getOppties extends LightningElement {
     @wire(getOpptyList,{userId : techId})
     dataRecord({data, error}){
        if(data){
-           this.opptyData = data;
+            this.opptyData = data;
+            refreshApex(this.getOpptyList);
        }
        else if(error){
            this.errorData = error;
        }
      }
-     handler() {
-        refreshApex(this.getOpptyList);
-      }
 
     get numOppties() {
         return this.opptyData.length;
