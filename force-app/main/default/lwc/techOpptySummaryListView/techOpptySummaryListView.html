@@ -1,0 +1,17 @@
+<template>
+    <template if:true={opptyData}>
+      <lightning-card title="Opportunities" icon-name="standard:opportunity">
+        <lightning-layout>
+          <lightning-layout-item>
+            <dl class="slds-align_absolute-center">
+              <dt>Open Opportunities: {numOpenOppties}</dt>
+            </dl>
+            <dl class="slds-align_absolute-center">
+               <dt>Won Opportunities {numWonOppties}</dt>
+            </dl>            
+          </lightning-layout-item>
+        </lightning-layout>
+      </lightning-card>
+    </template>
+    <template if:true={error}> Error: {error.body.message}</template>
+    </template>
