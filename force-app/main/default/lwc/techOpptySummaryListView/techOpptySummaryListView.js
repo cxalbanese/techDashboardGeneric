@@ -18,7 +18,6 @@ export default class getOppties extends LightningElement {
     dataRecord({data, error}){
        if(data){
             this.opptyData = data.records.records;
-            console.log('data szie = ' + this.opptyData.length);
        }
        else if(error){
            this.errorData = error;
@@ -32,7 +31,6 @@ export default class getOppties extends LightningElement {
     dataRecordWon({data, error}){
        if(data){
             this.opptyDataWon = data.records.records;
-            console.log('data szie = ' + this.opptyDataWon.length);
        }
        else if(error){
            this.errorDataWon = error;
