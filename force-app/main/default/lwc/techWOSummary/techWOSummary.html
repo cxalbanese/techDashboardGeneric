@@ -1,15 +1,15 @@
 <template>
     <template if:true={WOData}>
       <lightning-card title="Open Work Orders" icon-name="standard:work_order">
-        <lightning-layout>
-          <lightning-layout-item>
-            <dl class="slds-align_absolute-center">
+        <lightning-layout horizontal-align="center">
+          <lightning-layout-item class="slds-text-align_center">
+            <dl>
               <dt>Contract: {numContractWOs}</dt>
             </dl>
-            <dl class="slds-align_absolute-center">
+            <dl>
                <dt>Project: {numProjectWOs}</dt>
             </dl>   
-            <dl class="slds-align_absolute-center">
+            <dl>
                <dt>Spot: {numSpotWOs}</dt>
             </dl>            
           </lightning-layout-item>

@@ -1,12 +1,17 @@
 import { api, LightningElement, track, wire } from 'lwc';
-import { refreshApex } from '@salesforce/apex';
-//import getOpptyList from '@salesforce/apex/techDashboard.getOpptyInfo';
 import { getListUi } from 'lightning/uiListApi';
 import OPPORTUNITY_OBJECT from '@salesforce/schema/Opportunity'; 
 import CLOSED_FIELD from '@salesforce/schema/Opportunity.IsClosed'
-import techId from '@salesforce/user/Id';
 
+import customlabelopenoppty from "@salesforce/label/c.techOpenOppty";
+import customlabelwonoppty from "@salesforce/label/c.techWonOppty"; 
+import customlabelopptyheader from "@salesforce/label/c.techOpptyHeader"; 
 export default class getOppties extends LightningElement {
+labels = {
+    customlabelopenoppty,
+    customlabelwonoppty,
+    customlabelopptyheader
+};
     @track opptyData = [];
     @track errorData;
     @track opptyDataWon = [];

@@ -1,9 +1,9 @@
 <template>
     <template if:true={saData}>
       <lightning-card title="Service Appointments" icon-name="standard:service_appointment">
-        <lightning-layout>
-            <lightning-layout-item>
-              <dl class="slds-align_absolute-center">
+        <lightning-layout horizontal-align="center">
+            <lightning-layout-item class="slds-text-align_center">
+              <dl>
                   <dt>Open Service Appointments: {numOpenSAs}</dt>
               </dl>
             </lightning-layout-item>
