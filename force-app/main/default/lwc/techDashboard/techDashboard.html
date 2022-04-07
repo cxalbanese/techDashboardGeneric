@@ -1,8 +1,11 @@
 <template>
+<template if:true={summary}>
   <lightning-card title="Technician Dashboard" icon-name="action:user">
   </lightning-card>
   <c-tech-user-summary></c-tech-user-summary>
   <c-tech-s-a-summary></c-tech-s-a-summary>
   <c-tech-w-o-summary></c-tech-w-o-summary>
-  <c-tech-oppty-summary-list-view></c-tech-oppty-summary-list-view>
+  <c-tech-oppty-summary-list-view onclick={handleClick}></c-tech-oppty-summary-list-view>  
+  <c-tech-oppty-list-view if:true={detail}></c-tech-oppty-list-view> 
+</template>
 </template>

@@ -1,0 +1,43 @@
+<template>
+  <lightning-card icon-name="standard:opportunity">
+    <h1 slot="title">Opportunity Details</h1>
+    <div class="slds-text-title_caps slds-p-around_small">Opportunities that I have created</div>
+    <template if:false={hasRecords}>
+      <div class="slds-p-around_small">
+        There are no open or won opportunities for you.
+      </div>
+    </template>
+    <template if:true={hasRecords}>
+      <table
+        class="slds-table slds-table_bordered slds-border_left slds-border_right slds-m-around_small"
+      >
+        <thead>
+          <tr class="slds-line-height_reset">
+            <th class="" scope="col">
+              <div class="slds-truncate" title="Name">Name</div>
+            </th>
+            <th class="" scope="col">
+              <div class="slds-truncate" title="Stage">Stage</div>
+            </th>            
+            <th class="" scope="col">
+              <div class="slds-truncate" title="Amount">Amount</div>
+            </th>
+            <th class="" scope="col">
+              <div class="slds-truncate" title="Closed Date">Closed Date</div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <template for:each={records} for:item="oppty">
+              <tr key={oppty.id}> 
+                <td>{oppty.fields.Name.value}</td>
+                <td>{oppty.fields.StageName.value}</td>
+                <td><lightning-formatted-number value={oppty.fields.Amount.value} format-style="currency" currency-code="USD"></lightning-formatted-number></td>
+                <td><lightning-formatted-date-time value={oppty.fields.CloseDate.value}></lightning-formatted-date-time></td>
+              </tr>
+          </template>
+        </tbody>
+      </table>
+    </template>
+    </lightning-card>
+  </template>
