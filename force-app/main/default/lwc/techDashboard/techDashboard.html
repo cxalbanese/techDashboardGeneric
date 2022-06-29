@@ -1,11 +1,13 @@
 <template>
-<template if:true={summary}>
   <lightning-card title="Technician Dashboard" icon-name="action:user">
   </lightning-card>
-  <c-tech-user-summary></c-tech-user-summary>
-  <c-tech-s-a-summary></c-tech-s-a-summary>
-  <c-tech-w-o-summary></c-tech-w-o-summary>
-  <c-tech-oppty-summary-list-view onclick={handleClick}></c-tech-oppty-summary-list-view>  
-  <c-tech-oppty-list-view if:true={detail}></c-tech-oppty-list-view> 
-</template>
+  <c-tech-user-summary if:true={summary}></c-tech-user-summary>
+  <c-tech-s-a-summary if:true={summary}></c-tech-s-a-summary>
+  <c-tech-w-o-summary if:true={summary}></c-tech-w-o-summary>
+  <c-tech-oppty-summary-list-view if:true={summary} onclick={handleClick}></c-tech-oppty-summary-list-view>   
+  <c-tech-time-sheet-by-week if:true={summary}></c-tech-time-sheet-by-week>
+  <div>
+    <button onclick={printPage} if:true={summary}>Print</button>
+  </div> 
+  <c-tech-oppty-list-view if:true={detail} onclick={handleClick}></c-tech-oppty-list-view> 
 </template>

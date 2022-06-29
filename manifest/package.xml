@@ -35,5 +35,9 @@
         <members>*</members>
         <name>StaticResource</name>
     </types>
+    <types>
+        <members>WorkType.Work_Type_Category__c</members>
+        <name>CustomField</name>
+    </types> 
     <version>52.0</version>
 </Package>

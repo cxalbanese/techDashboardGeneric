@@ -12,6 +12,7 @@ labels = {
     customlabelwonoppty,
     customlabelopptyheader
 };
+
     @track opptyData = [];
     @track errorData;
     @track opptyDataWon = [];
@@ -48,5 +49,5 @@ labels = {
     }
     get numWonOppties() {
         return this.opptyDataWon.length;
-    }   
+    } 
 }

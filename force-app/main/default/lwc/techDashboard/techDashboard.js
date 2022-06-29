@@ -9,5 +9,9 @@ export default class LwcUserDetail extends LightningElement {
     }
 handleClick(event)  {
     this.detail=!this.detail;
+    this.summary=!this.summary;
 }   
+printPage() {
+    window.print();
+}
 }

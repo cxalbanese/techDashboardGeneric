@@ -23,4 +23,51 @@ public with sharing class techDashboard {
         for(serviceappointment sa : getSAInfo(userId)) setParentRecordId.add(sa.ParentRecordId);
         return [select id,workordernumber,worktypeid,worktype.work_type_category__c from workorder where id in :setParentRecordId];
     } 
+    //getTSInfo - returns map of time sheet entries by day of week as well as summary of regular, ot and burden
+    @AuraEnabled(cacheable=true)
+    public static Map<String,Decimal> getTSInfo(string userId) {
+        Boolean errorFound = false;
+        //** this datetime should be a parameter 
+        Date thisWeeksDate = Date.today();
+        TimeSheet TS = new TimeSheet();
+        List<TimeSheetEntry> listTSE = new list<TimeSheetEntry>();
+        Map<String,Decimal> mapTSE = new Map<String,Decimal>();
+        List<String> daysOfWeek = new List<String>{'Sun','Mon','Tue','Wed','Thu','Fri','Sat','Straight','Overtime','Burden'};
+        for (String thisDOW : daysOfWeek) {
+            decimal x = 0;
+            mapTSE.put(thisDOW,x);            
+        }
+        try {
+            TS = [select id from TimeSheet where ServiceResourceId = :getSRInfo(userId).Id and StartDate <= :thisWeeksDate and EndDate >= :thisWeeksDate limit 1];
+            listTSE = [select id,timesheetentrynumber,starttime,endtime,status,subject,type,durationinminutes from timesheetentry where TimeSheetId = :TS.id];
+        }
+        catch (Exception e) {
+            errorFound=true;
+            system.debug(e.getMessage());
+
+        }
+        //** found an error? just exit and return a map with all zeroes
+        if(errorFound) return mapTSE;
+        //** loop through the timesheet entries and place the values in the map
+        for(TimeSheetEntry thisTSE : listTSE){
+            string thisDOW = thisTSE.starttime.format('EEE');
+            mapTSE.put(thisDOW,mapTSE.get(thisDOW)+thisTSE.durationinminutes);
+        }
+        //** calculate straight, overtime and burden totals 
+        //** using TSE.Type field to bucket the values
+        //** Overtime = Overtime, Indirect = Burden, everything else = Straight
+        decimal straight=0;
+        decimal overtime=0;
+        decimal burden=0;
+        for(timesheetentry thisTSE : listTSE)
+            if(thisTSE.Type=='Indirect') 
+                mapTSE.put('Burden',mapTSE.get('Burden')+thisTSE.durationinminutes);
+            else 
+                if(thisTSE.Type=='Overtime') 
+                    mapTSE.put('Overtime',mapTSE.get('Overtime')+thisTSE.durationinminutes);
+                else mapTSE.put('Straight',mapTSE.get('Straight')+thisTSE.durationinminutes);
+                system.debug('***********');
+                system.debug(mapTSE);
+        return mapTSE;
+    }  
 }

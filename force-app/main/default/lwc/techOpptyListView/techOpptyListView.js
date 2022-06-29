@@ -9,6 +9,7 @@ import customlabelopenoppty from "@salesforce/label/c.techOpenOppty";
 import customlabelwonoppty from "@salesforce/label/c.techWonOppty"; 
 import customlabelopptyheader from "@salesforce/label/c.techOpptyHeader"; 
 
+import { NavigationMixin } from 'lightning/navigation';
 export default class TechOpptyListView extends LightningElement {
 
     @api recordId;
@@ -21,6 +22,15 @@ export default class TechOpptyListView extends LightningElement {
     };
     get hasRecords() {
         return this.records && this.records.length > 0;
+    }
+    navigateToOpportunity() {
+        this[NavigationMixin.Navigate]({
+            "type": "standard__webPage", 
+            "attributes": {
+            "url": 'com.salesforce.fieldservice://v1/sObject/$006B0000007vdv2IAA/details'
+         }
+            
+        });
     }
 
     @wire(getListUi,{
