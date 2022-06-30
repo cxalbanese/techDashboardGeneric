@@ -5,9 +5,9 @@ import { getListUi } from 'lightning/uiListApi';
 import OPPORTUNITY_OBJECT from '@salesforce/schema/Opportunity'; 
 import CLOSED_FIELD from '@salesforce/schema/Opportunity.IsClosed'
 
-import customlabelopenoppty from "@salesforce/label/c.techOpenOppty";
-import customlabelwonoppty from "@salesforce/label/c.techWonOppty"; 
-import customlabelopptyheader from "@salesforce/label/c.techOpptyHeader"; 
+import customlabelOpportunitiesCreated from "@salesforce/label/c.OpportunitiesCreated"; 
+import customlabelOpportunityDetailsTitle from "@salesforce/label/c.OpportunityDetailsTitle";
+import customlabelOpportunitiesNone from "@salesforce/label/c.OpportunitiesNone";  
 
 import { NavigationMixin } from 'lightning/navigation';
 export default class TechOpptyListView extends LightningElement {
@@ -16,9 +16,9 @@ export default class TechOpptyListView extends LightningElement {
     @track records;
     @track error;
     labels = {
-        customlabelopenoppty,
-        customlabelwonoppty,
-        customlabelopptyheader
+        customlabelOpportunitiesCreated,
+        customlabelOpportunityDetailsTitle,
+        customlabelOpportunitiesNone
     };
     get hasRecords() {
         return this.records && this.records.length > 0;

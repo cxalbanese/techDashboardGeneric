@@ -1,13 +1,13 @@
 <template>
     <template if:true={srData}>
-      <lightning-card title="User" icon-name="standard:service_resource">
+      <lightning-card title={labels.customlabelUserTitle} icon-name="standard:service_resource">
         <lightning-layout horizontal-align="center">
             <lightning-layout-item class="slds-text-align_center">
               <dl>
-                  <dt>User Name: {techName}</dt>
+                  <dt>{labels.customlabelUserName}: {techName}</dt>
                 </dl>
               <dl>
-                <dt>Last Location Date:&nbsp;
+                <dt>{labels.customlabelUserLastLocationDate}:&nbsp;
                     <lightning-formatted-date-time value={techLastDate} year="2-digit" month="short" day="2-digit" hour="numeric"
                     minute="numeric" weekday="long"></lightning-formatted-date-time>                    
                     </dt>

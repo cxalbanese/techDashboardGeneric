@@ -39,5 +39,11 @@
         <members>WorkType.Work_Type_Category__c</members>
         <name>CustomField</name>
     </types> 
+    <types>
+      <members>techOpenOppty</members>
+      <members>techOpptyHeader</members>
+      <members>techWonOppty</members>
+      <name>CustomLabel</name>
+    </types>
     <version>52.0</version>
 </Package>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>DashboardTitle</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Main Page Title</shortDescription>
+        <value>Technician Dashboard</value>
+    </labels>   
+	<labels>
+        <fullName>UserTitle</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>User Section Title</shortDescription>
+        <value>User</value>
+    </labels>
+    <labels>
+        <fullName>UserName</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>User Name</shortDescription>
+        <value>User Name</value>
+    </labels>
+	<labels>
+        <fullName>ServiceAppointmentTitle</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Service Appointment Section Title</shortDescription>
+        <value>Service Appointments</value>
+    </labels>
+    <labels>
+        <fullName>OpenServiceAppointments</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Open Service Appointments</shortDescription>
+        <value>Open Service Appointments</value>
+    </labels>    
+    <labels>
+        <fullName>UserLastLocationDate</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>User Last Location Date</shortDescription>
+        <value>Last Location Date</value>
+    </labels>
+	<labels>
+        <fullName>WorkOrderTitle</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Work Order Section Title</shortDescription>
+        <value>Open Work Orders</value>
+    </labels>
+    <labels>
+        <fullName>ContractWorkOrders</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contract Work Order</shortDescription>
+        <value>Contract</value>
+    </labels>    
+    <labels>
+        <fullName>ProjectWorkOrders</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Project Work Order</shortDescription>
+        <value>Project</value>
+    </labels>    
+    <labels>
+        <fullName>SpotWorkOrders</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Spot Work Order</shortDescription>
+        <value>Spot</value>
+    </labels>    
+    <labels>
+        <fullName>UserLastLocationDate</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>User Last Location Date</shortDescription>
+        <value>Last Location Date</value>
+    </labels>       
+    <labels>
+        <fullName>OpportunitiesOpen</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Open Opportunities</shortDescription>
+        <value>Open Opportunities</value>
+    </labels>
+    <labels>
+        <fullName>OpportunityTitle</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunity Section Title</shortDescription>
+        <value>Opportunities</value>
+    </labels>
+    <labels>
+        <fullName>OpportunitiesWon</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Won Opportunities</shortDescription>
+        <value>Won Opportunities</value>
+    </labels>
+    <labels>
+        <fullName>OpportunityDetailsTitle</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunity Details Section Title</shortDescription>
+        <value>Opportunity Details</value>
+    </labels>
+    <labels>
+        <fullName>OpportunitiesCreated</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Opportunities that I have Created</shortDescription>
+        <value>Opportunities that I have Created</value>
+    </labels>
+    <labels>
+        <fullName>OpportunitiesNone</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>There are no open or won opportunities for you.</shortDescription>
+        <value>There are no open or won opportunities for you.</value>
+    </labels>
+    </CustomLabels>

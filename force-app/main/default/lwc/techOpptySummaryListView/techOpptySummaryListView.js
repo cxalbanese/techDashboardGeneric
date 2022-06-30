@@ -3,14 +3,14 @@ import { getListUi } from 'lightning/uiListApi';
 import OPPORTUNITY_OBJECT from '@salesforce/schema/Opportunity'; 
 import CLOSED_FIELD from '@salesforce/schema/Opportunity.IsClosed'
 
-import customlabelopenoppty from "@salesforce/label/c.techOpenOppty";
-import customlabelwonoppty from "@salesforce/label/c.techWonOppty"; 
-import customlabelopptyheader from "@salesforce/label/c.techOpptyHeader"; 
+import customlabelOpportunitiesOpen from "@salesforce/label/c.OpportunitiesOpen";
+import customlabelOpportunitiesWon from "@salesforce/label/c.OpportunitiesWon"; 
+import customlabelOpportunityTitle from "@salesforce/label/c.OpportunityTitle"; 
 export default class getOppties extends LightningElement {
 labels = {
-    customlabelopenoppty,
-    customlabelwonoppty,
-    customlabelopptyheader
+    customlabelOpportunitiesOpen,
+    customlabelOpportunitiesWon,
+    customlabelOpportunityTitle
 };
 
     @track opptyData = [];

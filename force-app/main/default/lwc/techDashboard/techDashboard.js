@@ -1,9 +1,13 @@
 import { track,LightningElement, wire } from 'lwc';
 import Id from '@salesforce/user/Id';
 
+import customlabelDashboardTitle from "@salesforce/label/c.DashboardTitle";
 export default class LwcUserDetail extends LightningElement {
 @track summary=true;
 @track detail=false;
+labels = {
+    customlabelDashboardTitle
+};
     get myUserId() {
         return Id;
     }

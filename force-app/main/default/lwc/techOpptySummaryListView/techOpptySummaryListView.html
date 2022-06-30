@@ -1,14 +1,14 @@
 <template>
     <template if:true={opptyData}>
       <lightning-card icon-name="standard:opportunity">
-        <h1 slot="title">{labels.customlabelopptyheader}</h1>
+        <h1 slot="title">{labels.customlabelOpportunityTitle}</h1>
         <lightning-layout horizontal-align="center">
           <lightning-layout-item class="slds-text-align_center">
             <dl>
-              <dt>{labels.customlabelopenoppty}: {numOpenOppties}</dt> 
+              <dt>{labels.customlabelOpportunitiesOpen}: {numOpenOppties}</dt> 
             </dl>
             <dl>
-               <dt>{labels.customlabelwonoppty}: {numWonOppties}</dt>
+               <dt>{labels.customlabelOpportunitiesWon}: {numWonOppties}</dt>
             </dl>       
           </lightning-layout-item>
         </lightning-layout>

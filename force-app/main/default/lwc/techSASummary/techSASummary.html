@@ -1,10 +1,10 @@
 <template>
     <template if:true={saData}>
-      <lightning-card title="Service Appointments" icon-name="standard:service_appointment">
+      <lightning-card title={labels.customlabelServiceAppointmentTitle} icon-name="standard:service_appointment">
         <lightning-layout horizontal-align="center">
             <lightning-layout-item class="slds-text-align_center">
               <dl>
-                  <dt>Open Service Appointments: {numOpenSAs}</dt>
+                  <dt>{labels.customlabelOpenServiceAppointments}: {numOpenSAs}</dt>
               </dl>
             </lightning-layout-item>
         </lightning-layout>
