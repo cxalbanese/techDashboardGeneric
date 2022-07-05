@@ -40,9 +40,22 @@
         <name>CustomField</name>
     </types> 
     <types>
-      <members>techOpenOppty</members>
-      <members>techOpptyHeader</members>
-      <members>techWonOppty</members>
+      <members>ContractWorkOrders</members>
+      <members>DashboardTitle</members>
+      <members>OpenServiceAppointments</members>
+      <members>OpportunitiesCreated</members>
+      <members>OpportunitiesNone</members>
+      <members>OpportunitiesOpen</members>
+      <members>OpportunitiesWon</members>
+      <members>OpportunityDetailsTitle</members>
+      <members>OpportunityTitle</members>
+      <members>ProjectWorkOrders</members>
+      <members>ServiceAppointmentTitle</members>
+      <members>SpotWorkOrders</members>
+      <members>UserLastLocationDate</members>
+      <members>UserName</members>
+      <members>UserTitle</members>
+      <members>WorkOrderTitle</members>
       <name>CustomLabel</name>
     </types>
     <version>52.0</version>
