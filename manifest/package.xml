@@ -68,6 +68,10 @@
     <types>       
     <members>Dashboard</members>   
     <name>QuickAction</name>  
-</types>
+    </types>
+    <types>
+        <members>techDashboard</members>
+        <name>BriefcaseDefinition</name>
+    </types>
     <version>52.0</version>
 </Package>
