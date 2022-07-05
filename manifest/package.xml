@@ -37,7 +37,14 @@
     </types>
     <types>
         <members>WorkType.Work_Type_Category__c</members>
+        <members>Opportunity.Created_by_me__c</members>
         <name>CustomField</name>
+    </types> 
+    <types> 
+        <members>Opportunity.My_Open_Opportunities</members>
+        <members>Opportunity.My_Open_or_Won_Opportunities</members> 
+        <members>Opportunity.My_Won_Opportunities</members>  
+        <name>ListView</name> 
     </types> 
     <types>
       <members>ContractWorkOrders</members>
@@ -58,5 +65,9 @@
       <members>WorkOrderTitle</members>
       <name>CustomLabel</name>
     </types>
+    <types>       
+    <members>Dashboard</members>   
+    <name>QuickAction</name>  
+</types>
     <version>52.0</version>
 </Package>
