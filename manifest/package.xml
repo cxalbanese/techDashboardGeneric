@@ -73,5 +73,5 @@
         <members>techDashboard</members>
         <name>BriefcaseDefinition</name>
     </types>
-    <version>52.0</version>
+    <version>55.0</version>
 </Package>
