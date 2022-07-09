@@ -17,6 +17,7 @@ labels = {
     @track errorData;
     @track opptyDataWon = [];
     @track errorDataWon;
+    //following wire returns the list of open opportunities created by the technician
     @wire(getListUi,{
         objectApiName : OPPORTUNITY_OBJECT, 
         listViewApiName: 'My_Open_Opportunities',
@@ -30,6 +31,8 @@ labels = {
            this.opptyData = undefined;
        }
      }
+
+    //following wire returns the list of won opportunities created by the technician
      @wire(getListUi,{
         objectApiName : OPPORTUNITY_OBJECT, 
         listViewApiName: 'My_Won_Opportunities',
