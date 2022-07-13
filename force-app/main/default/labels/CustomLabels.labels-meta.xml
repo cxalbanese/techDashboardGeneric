@@ -136,4 +136,69 @@
         <shortDescription>There are no open or won opportunities for you.</shortDescription>
         <value>There are no open or won opportunities for you.</value>
     </labels>
+    <labels>
+        <fullName>WorkOrdersNone</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>There are no work orders for you.</shortDescription>
+        <value>There are no work orders for you.</value>
+    </labels>
+    <labels>
+        <fullName>WorkOrderDetailsTitle</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Work Order Details Section Title</shortDescription>
+        <value>Work Order Details</value>
+    </labels>
+    <labels>
+        <fullName>WorkOrdersAssigned</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Work Orders assigned to me</shortDescription>
+        <value>Work Orders assigned to me</value>
+    </labels>
+    <labels>
+        <fullName>ServiceAppointmentsNone</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>There are no service appointments for you.</shortDescription>
+        <value>There are no service appointments for you.</value>
+    </labels>
+    <labels>
+        <fullName>SADetailsTitle</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Service Appointment Details Section Title</shortDescription>
+        <value>Service Appointment Details</value>
+    </labels>
+    <labels>
+        <fullName>ServiceAppointmentsAssigned</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Service Appointments assigned to me</shortDescription>
+        <value>Service Appointments assigned to me</value>
+    </labels>
+
+    <labels>
+        <fullName>TimeSheetEntriesNone</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>There are no time sheet entries for you.</shortDescription>
+        <value>There are no time sheet entries for you.</value>
+    </labels>
+    <labels>
+        <fullName>TimeSheetEntryDetailsTitle</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Time Sheet Entry Details Section Title</shortDescription>
+        <value>Time Sheet Entries</value>
+    </labels>
     </CustomLabels>

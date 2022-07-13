@@ -1,0 +1,52 @@
+<template>
+    <lightning-card icon-name="standard:work_order">
+      <h1 slot="title">{labels.customlabelWorkOrderTitle}</h1>
+      <div class="slds-text-title_caps slds-var-p-around_small">{labels.customlabelWorkOrderDetailsTitle}</div>
+      <template if:false={hasRecords}>
+        <div class="slds-var-p-around_small">
+          {labels.customlabelWorkOrdersNone}
+        </div>
+      </template>
+      <template if:true={hasRecords}>
+      <table
+          class="slds-table slds-table_cell-buffer slds-table_fixed-layout slds-max-medium-table_stacked-horizontal slds-table_bordered"
+        > 
+        <thead>
+          <!--<tr class="slds-line-height_reset">-->
+            <tr >
+              <th
+                class="tableHeaders"
+                scope="col">
+                {workordernumberlabel}
+            </th>            
+            <th
+                class="tableHeaders"
+                scope="col">
+                {subjectlabel}
+            </th>
+            <th
+                class="tableHeaders"
+                scope="col">
+                {worktypenamelabel}
+            </th>
+            <th
+            class="tableHeaders"
+            scope="col">
+            {worktypecategorylabel}
+        </th>
+        </tr>
+        </thead>              
+        <tbody> 
+            <template for:each={WOData} for:item="row">
+                <tr key={row.Id}>
+                    <td>{row.WorkOrderNumber}</td>
+                    <td>{row.Subject}</td>
+                    <td>{row.WorkType.Name}</td>
+                    <td>{row.WorkType.Work_Type_Category__c}</td>
+                </tr>
+              </template>            
+        </tbody> 
+        </table>
+      </template>
+      </lightning-card>
+    </template>

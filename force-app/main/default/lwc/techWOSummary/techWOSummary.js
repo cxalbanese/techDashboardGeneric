@@ -2,8 +2,18 @@ import { api, LightningElement, track, wire } from 'lwc';
 import { refreshApex } from '@salesforce/apex';
 import getWOList from '@salesforce/apex/techDashboard.getWOInfo';
 import techId from '@salesforce/user/Id';
+import customlabelWorkOrderTitle from "@salesforce/label/c.WorkOrderTitle";
+import customlabelContractWorkOrders from "@salesforce/label/c.ContractWorkOrders";
+import customlabelSpotWorkOrders from "@salesforce/label/c.SpotWorkOrders"; 
+import customlabelProjectWorkOrders from "@salesforce/label/c.ProjectWorkOrders";  
 
 export default class getWOs extends LightningElement {
+    labels = {
+    customlabelSpotWorkOrders,
+    customlabelProjectWorkOrders,
+    customlabelContractWorkOrders,
+    customlabelWorkOrderTitle
+};
     @track WOData = [];
     @track errorData;
     @wire(getWOList,{userId : techId})

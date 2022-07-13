@@ -1,16 +1,17 @@
 <template>
     <template if:true={WOData}>
-      <lightning-card title="Open Work Orders" icon-name="standard:work_order">
+      <lightning-card icon-name="standard:work_order">
+        <h1 slot="title">{labels.customlabelWorkOrderTitle}</h1>
         <lightning-layout horizontal-align="center">
           <lightning-layout-item class="slds-text-align_center">
             <dl>
-              <dt>Contract: {numContractWOs}</dt>
+              <dt>{labels.customlabelContractWorkOrders}: {numContractWOs}</dt>
             </dl>
             <dl>
-               <dt>Project: {numProjectWOs}</dt>
+               <dt>{labels.customlabelProjectWorkOrders}: {numProjectWOs}</dt>
             </dl>   
             <dl>
-               <dt>Spot: {numSpotWOs}</dt>
+               <dt>{labels.customlabelSpotWorkOrders}: {numSpotWOs}</dt>
             </dl>            
           </lightning-layout-item>
         </lightning-layout>

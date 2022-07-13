@@ -14,14 +14,14 @@ public with sharing class techDashboard {
     @AuraEnabled(cacheable=true)
     public static List<ServiceAppointment> getSAInfo(string userId) {
         string serviceResourceId = [select id from serviceresource where relatedrecordid = :userId].id;
-        return [SELECT ID, AppointmentNumber, Status, ParentRecordId,SchedStartTime,SchedEndTime,Duration from ServiceAppointment where StatusCategory in ('Scheduled','Dispatched','InProgress') and Id in (select serviceappointmentid from assignedresource where serviceresourceid = :serviceResourceId) LIMIT :rowLimit];
+        return [SELECT ID, Subject, AppointmentNumber, Status, ParentRecordId,SchedStartTime,SchedEndTime,Duration from ServiceAppointment where StatusCategory in ('Scheduled','Dispatched','InProgress') and Id in (select serviceappointmentid from assignedresource where serviceresourceid = :serviceResourceId) LIMIT :rowLimit];
     } 
     //getWOInfo - returns list of work orders and associated worktype and worktype work_type_category for the assigned SA
     @AuraEnabled(cacheable=true)
     public static List<WorkOrder> getWOInfo(string userId) {
         set<id> setParentRecordId = new set<id>();
         for(serviceappointment sa : getSAInfo(userId)) setParentRecordId.add(sa.ParentRecordId);
-        return [select id,workordernumber,worktypeid,worktype.work_type_category__c from workorder where id in :setParentRecordId];
+        return [select id,workordernumber,worktypeid,worktype.name, startdate, enddate, subject, worktype.work_type_category__c from workorder where id in :setParentRecordId];
     } 
     //getTSInfo - returns map of time sheet entries by day of week as well as summary of regular, ot and burden
     @AuraEnabled(cacheable=true)
@@ -69,5 +69,26 @@ public with sharing class techDashboard {
                 system.debug('***********');
                 system.debug(mapTSE);
         return mapTSE;
+    }  
+    //getTSList - returns list of time sheet entries 
+    @AuraEnabled(cacheable=true)
+    public static list<TimeSheetEntry> getTSList(string userId) {
+        Boolean errorFound = false;
+        //** this datetime should be a parameter 
+        Date thisWeeksDate = Date.today();
+        TimeSheet TS = new TimeSheet();
+        List<TimeSheetEntry> listTSE = new list<TimeSheetEntry>();
+
+        try {
+           listTSE = [select id,timesheetentrynumber,timesheet.timesheetnumber, starttime,endtime,status,subject,type,durationinminutes from timesheetentry where TimeSheetId in (select id from TimeSheet where ServiceResourceId = :getSRInfo(userId).Id and StartDate <= :thisWeeksDate and EndDate >= :thisWeeksDate) order by starttime];
+        }
+        catch (Exception e) {
+            errorFound=true;
+            system.debug(e.getMessage());
+
+        }
+        //** found an error? just exit and return an empty list
+        if(errorFound) return new list<timesheetentry>();
+        return listTSE;
     }  
 }

@@ -51,6 +51,7 @@
       <members>DashboardTitle</members>
       <members>OpenServiceAppointments</members>
       <members>OpportunitiesCreated</members>
+      <members>WorkOrdersNone</members>
       <members>OpportunitiesNone</members>
       <members>OpportunitiesOpen</members>
       <members>OpportunitiesWon</members>
@@ -63,6 +64,13 @@
       <members>UserName</members>
       <members>UserTitle</members>
       <members>WorkOrderTitle</members>
+      <members>WorkOrderDetailsTitle</members>
+      <members>WorkOrdersAssigned</members>
+      <members>ServiceAppointmentTitle</members>
+      <members>SADetailsTitle</members>
+      <members>ServiceAppointmentsAssigned</members>
+      <members>TimeSheetEntryDetailsTitle</members>
+      <members>TimeSheetEntriesNone</members>
       <name>CustomLabel</name>
     </types>
     <types>       

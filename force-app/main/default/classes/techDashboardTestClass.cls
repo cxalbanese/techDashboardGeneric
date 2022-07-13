@@ -24,6 +24,7 @@ public class techDashboardTestClass{
         List<ServiceAppointment> saResults = techDashboard.getSAInfo(userList[0].Id);
         list<WorkOrder> woResults = techDashboard.getWOInfo(userList[0].Id);
         Map<String,Decimal> tsResultsMap = techDashboard.getTSInfo(userList[0].id);
+        list<TimeSheetEntry> tseResults = techDashboard.getTSList(userList[0].Id);
 
         Test.stopTest();
 
@@ -32,6 +33,7 @@ public class techDashboardTestClass{
         System.assert(saResults!=null && saResults.size()>0);
         System.assert(woResults!=null && woResults.size()>0);
         System.assert(tsResultsMap!=null && tsResultsMap.size()>0);
+        System.assert(tseResults!=null && tseResults.size()>0);
 
 
     }
