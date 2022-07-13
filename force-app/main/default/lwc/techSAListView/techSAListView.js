@@ -41,9 +41,6 @@ export default class techSAListView extends LightningElement {
     } 
     @track saData = [];
     @track errorData;
-    labels = {
-        customlabelServiceAppointmentTitle
-    };
     @wire(getSAList,{userId : techId})
     dataRecord({data, error}){
         if(data){
