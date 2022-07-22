@@ -71,6 +71,19 @@
       <members>ServiceAppointmentsAssigned</members>
       <members>TimeSheetEntryDetailsTitle</members>
       <members>TimeSheetEntriesNone</members>
+      <members>Monday</members>
+      <members>Tuesday</members>
+      <members>Wednesday</members>
+      <members>Thursday</members>
+      <members>Friday</members>
+      <members>Saturday</members>
+      <members>Sunday</members>
+      <members>Total</members>
+      <members>Burden</members>
+      <members>Straight</members>
+      <members>Overtime</members>
+      <members>TimeSheetSummaryTitle</members>
+      <members>TimeSheetSummarySubtitle</members>
       <name>CustomLabel</name>
     </types>
     <types>       

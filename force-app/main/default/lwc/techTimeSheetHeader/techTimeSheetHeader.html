@@ -1,0 +1,31 @@
+
+<template>
+    <lightning-card icon-name="standard:timesheet_entry">
+      <h1 slot="title">{labels.customlabelTitle}</h1>
+      <div
+        class="slds-grid slds-gutters slds-grid_vertical-align-center slds-wrap">
+        <div class="slds-col slds-size_1-of-1">
+          <span class="slds-align_absolute-center">{labels.customlabelSubtitle}</span>
+        </div>
+        <div class="slds-col slds-size_1-of-1">
+          <span class="slds-align_absolute-center">{labels.customlabelTotal}:&nbsp;<lightning-formatted-number value={total} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></span>
+        </div>
+        <template for:each={labelArray} for:item="label">
+            <div key={label} class="slds-col slds-size_1-of-7">
+                <span class="slds-align_absolute-center">{label}</span>
+             </div>
+        </template>
+        <template for:each={rows} for:item="row">
+            <div key={row.id} class="slds-col slds-size_1-of-7">
+                <span class="slds-align_absolute-center"><lightning-formatted-number value={row.value} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></span>
+             </div>
+        </template>
+    <div class="slds-col slds-size_1-of-1">
+        <span class="slds-align_absolute-center">Straight:&nbsp;<lightning-formatted-number value={straight} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>&nbsp;Overtime:&nbsp;<lightning-formatted-number value={overtime} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></span>
+      </div>
+      <div class="slds-col slds-size_1-of-1">
+        <span class="slds-align_absolute-center">Burden:&nbsp;<lightning-formatted-number value={burden} format-style="decimal" minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></span>
+      </div>
+      </div>
+    </lightning-card>
+  </template>

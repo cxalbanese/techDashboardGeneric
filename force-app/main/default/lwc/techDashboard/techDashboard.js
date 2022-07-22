@@ -1,6 +1,6 @@
 import { track,LightningElement, wire } from 'lwc';
 import Id from '@salesforce/user/Id';
-
+import customLabels from "./labels";
 import customlabelDashboardTitle from "@salesforce/label/c.DashboardTitle";
 export default class LwcUserDetail extends LightningElement {
 @track summary=true;
@@ -8,7 +8,13 @@ export default class LwcUserDetail extends LightningElement {
 @track woDetail=false;
 @track saDetail=false;
 @track tsDetail=false;
-labels = {
+opptyCreatedTitle=customLabels.OpportunitiesCreated;
+opptyDetailsTitle=customLabels.OpportunityDetailsTitle;
+opptyNone=customLabels.OpportunitiesNone;
+saTitle=customLabels.ServiceAppointmentTitle;
+saDetailsTitle=customLabels.ServiceAppointmentDetailsTitle;
+saNone=customLabels.ServiceAppointmentsNone;
+@track labels = {
     customlabelDashboardTitle
 };
     get myUserId() {

@@ -184,7 +184,6 @@
         <shortDescription>Service Appointments assigned to me</shortDescription>
         <value>Service Appointments assigned to me</value>
     </labels>
-
     <labels>
         <fullName>TimeSheetEntriesNone</fullName>
         <categories>techDashboard</categories>
@@ -201,4 +200,108 @@
         <shortDescription>Time Sheet Entry Details Section Title</shortDescription>
         <value>Time Sheet Entries</value>
     </labels>
-    </CustomLabels>
+    <labels>
+        <fullName>Monday</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Monday label</shortDescription>
+        <value>Mon</value>
+    </labels>
+    <labels>
+        <fullName>Tuesday</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Tuesday label</shortDescription>
+        <value>Tue</value>
+    </labels>   
+    <labels>
+        <fullName>Wednesday</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Wednesday label</shortDescription>
+        <value>Wed</value>
+    </labels>
+    <labels>
+        <fullName>Thursday</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Thursday label</shortDescription>
+        <value>Thu</value>
+    </labels>
+    <labels>
+        <fullName>Friday</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Friday label</shortDescription>
+        <value>Fri</value>
+    </labels>
+    <labels>
+        <fullName>Saturday</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Saturday label</shortDescription>
+        <value>Sat</value>
+    </labels>
+    <labels>
+        <fullName>Sunday</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sunday label</shortDescription>
+        <value>Sun</value>
+    </labels>
+    <labels>
+        <fullName>Total</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Total label</shortDescription>
+        <value>Total</value>
+    </labels>
+    <labels>
+        <fullName>Straight</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Straight label</shortDescription>
+        <value>Straight</value>
+    </labels>
+    <labels>
+        <fullName>Burden</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Burden label</shortDescription>
+        <value>Burden</value>
+    </labels>
+    <labels>
+        <fullName>Overtime</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Overtime label</shortDescription>
+        <value>Overtime</value>
+    </labels>    
+    <labels>
+        <fullName>TimeSheetSummaryTitle</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Time Sheet Summary Title</shortDescription>
+        <value>Summary of Time</value>
+    </labels>
+    <labels>
+        <fullName>TimeSheetSummarySubtitle</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Time Sheet Summary Subtitle</shortDescription>
+        <value>Hours Entered This Week</value>
+    </labels>
+</CustomLabels>

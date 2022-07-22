@@ -1,9 +1,10 @@
+<!-- not in use -->
 <template>
   <lightning-card icon-name="standard:opportunity">
     <h1 slot="title">{labels.customlabelOpportunityDetailsTitle}</h1>
-    <div class="slds-text-title_caps slds-p-around_small">{labels.customlabelOpportunitiesCreated}</div>
+    <div class="slds-text-title_caps slds-var-p-around_small">{labels.customlabelOpportunitiesCreated}</div>
     <template if:false={hasRecords}>
-      <div class="slds-p-around_small">
+      <div class="slds-var-p-around_small">
         {labels.customlabelOpportunitiesNone}
       </div>
     </template>

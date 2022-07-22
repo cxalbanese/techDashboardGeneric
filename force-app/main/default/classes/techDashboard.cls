@@ -91,4 +91,22 @@ public with sharing class techDashboard {
         if(errorFound) return new list<timesheetentry>();
         return listTSE;
     }  
+    //getTSHeader - returns Time Sheet Headerfor the current week
+    @AuraEnabled(cacheable=true)
+    public static TimeSheet getTSHeader(string userId) {
+        Boolean errorFound = false;
+        //** this datetime should be a parameter 
+        Date thisWeeksDate = Date.today();
+        TimeSheet TS = new TimeSheet();
+        try {
+            TS = [select id,timesheetnumber,startdate,enddate from TimeSheet where ServiceResourceId = :getSRInfo(userId).Id and StartDate <= :thisWeeksDate and EndDate >= :thisWeeksDate limit 1];
+        }
+        catch (Exception e) {
+            errorFound=true;
+            system.debug(e.getMessage());
+
+        }
+        //** return the TS. If there is none or an error was found it will just be empty
+        return TS;
+    }  
 }

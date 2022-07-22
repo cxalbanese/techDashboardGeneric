@@ -1,0 +1,89 @@
+<template>
+    <lightning-card icon-name={iconName}>
+      <!-- <h1 slot="title">{labels.customlabelOpportunityDetailsTitle}</h1> -->
+      <h1 slot="title">{titleLabel}</h1>
+      <div class="slds-text-title_caps slds-var-p-around_small">{subtitleLabel}</div>
+      <template if:false={hasRecords}>
+        <div class="slds-var-p-around_small">
+          {noRecordsLabel}
+        </div>
+      </template>
+      <template if:true={hasRecords}>
+        <table
+          class="slds-table slds-table_cell-buffer slds-table_fixed-layout slds-max-medium-table_stacked-horizontal slds-table_bordered"
+        >
+        <thead>
+          <tr class="slds-line-height_reset">
+            <template for:each={columns} for:item="col" for:index="colIndex">
+              <th
+                id={col.fieldName}
+                data-id={col.fieldName}
+                key={col.label}
+                class="tableHeaders"
+                scope="col"
+              >
+                {col.label}
+              </th>
+            </template>
+          </tr>
+        </thead>              
+        <tbody>
+          <template for:each={rows} for:item="row" for:index="rowIndex">
+            <tr key={row.Id} data-record={row.Id}>
+              <template
+                for:each={row.cells}
+                for:item="cell"
+                for:index="cellIndex"
+              >
+                <td
+                  key={cell.fieldApiName}
+                  data-field-api-name={cell.fieldApiName}
+                  class={cell.getCellClass}
+                >
+                <template if:true={cell.isCurrency}>
+                  <div>
+                        <lightning-formatted-number value={cell.value} format-style="currency" currency-code={currency} currency-display-as="symbol" minimum-fraction-digits="0" ></lightning-formatted-number>
+                  </div>
+                  </template>
+                <template if:true={cell.isDateTime}>
+                      <div><lightning-formatted-date-time value={cell.value}></lightning-formatted-date-time>
+                      </div>
+                </template>
+                <template if:true={cell.isDate}>
+                  <div><lightning-formatted-date-time value={cell.value}></lightning-formatted-date-time>
+                  </div>
+            </template>                     
+                  <template if:true={cell.isAllOtherTypes}>
+                  <div>{cell.value}
+                  </div>
+                  </template>
+                </td>
+              </template>
+            </tr>
+          </template>
+        </tbody>
+        </table>
+                        <!-- Navigation Buttons 
+                        <div class="navigation-buttons">
+                            <div class="slds-var-m-around_x-small">
+                              <lightning-button-icon-stateful
+                                class=""
+                                title="Previous"
+                                icon-name="utility:chevronleft"
+                                onclick={handlePreviousPage}
+                                disabled={disablePrevPage}
+                              ></lightning-button-icon-stateful>
+                            </div>
+                            <div class="slds-var-m-around_x-small slds-col_bump-left">
+                              <lightning-button-icon-stateful
+                                class=""
+                                title="Next"
+                                icon-name="utility:chevronright"
+                                onclick={handleNextPage}
+                                disabled={disableNextPage}
+                              ></lightning-button-icon-stateful>
+                            </div>
+                          </div> -->
+      </template>
+      </lightning-card>
+    </template>
