@@ -42,22 +42,22 @@
         </thead>              
         <tbody> 
             <template for:each={tseData} for:item="row">
-                <tr key={row.Id}>
-                    <td>{row.TimeSheet.TimeSheetNumber}</td>
-                    <td>{row.TimeSheetEntryNumber}</td>
-                    <td><lightning-formatted-date-time value={row.StartTime}      
+                <tr key={row.id}>
+                    <td>{tsNumber}</td>
+                    <td>{row.fields.TimeSheetEntryNumber.value}</td>
+                    <td><lightning-formatted-date-time value={row.fields.StartTime.value}      
                         year="numeric"
                         month="numeric"
                         day="numeric"
                         hour="2-digit"
                         minute="2-digit"></lightning-formatted-date-time></td>
-                        <td><lightning-formatted-date-time value={row.EndTime}      
+                        <td><lightning-formatted-date-time value={row.fields.EndTime.value}      
                             year="numeric"
                             month="numeric"
                             day="numeric"
                             hour="2-digit"
                             minute="2-digit"></lightning-formatted-date-time></td>
-                    <td>{row.Type}</td>
+                    <td>{row.fields.Type.value}</td>
                 </tr>
               </template>            
         </tbody> 
