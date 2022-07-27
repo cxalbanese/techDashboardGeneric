@@ -2,18 +2,25 @@
     <template if:true={WOData}>
       <lightning-card icon-name="standard:work_order">
         <h1 slot="title">{labels.customlabelWorkOrderTitle}</h1>
-        <lightning-layout horizontal-align="center">
-          <lightning-layout-item class="slds-text-align_center">
-            <dl>
-              <dt>{labels.customlabelContractWorkOrders}: {numContractWOs}</dt>
-            </dl>
-            <dl>
-               <dt>{labels.customlabelProjectWorkOrders}: {numProjectWOs}</dt>
-            </dl>   
-            <dl>
-               <dt>{labels.customlabelSpotWorkOrders}: {numSpotWOs}</dt>
-            </dl>            
-          </lightning-layout-item>
+          <lightning-layout>
+            <lightning-layout-item flexibility="auto" padding="around-small">
+              <div class="header-column">
+                <p class = "field-title" title="ContractWOs">{labels.customlabelContractWorkOrders}</p>
+                  <p class="field-value">{numContractWOs}</p>
+              </div>
+          </lightning-layout-item> 
+          <lightning-layout-item flexibility="auto" padding="around-small">
+            <div class="header-column">
+              <p class = "field-title" title="ProjectWOs">{labels.customlabelProjectWorkOrders}</p>
+                <p class="field-value">{numProjectWOs}</p>
+            </div>
+        </lightning-layout-item>         
+        <lightning-layout-item flexibility="auto" padding="around-small">
+          <div class="header-column">
+            <p class = "field-title" title="SpotWOs">{labels.customlabelSpotWorkOrders}</p>
+              <p class="field-value">{numSpotWOs}</p>
+          </div>
+        </lightning-layout-item>     
         </lightning-layout>
       </lightning-card>
     </template>

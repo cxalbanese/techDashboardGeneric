@@ -1,12 +1,13 @@
 <template>
     <template if:true={saData}>
       <lightning-card title={labels.customlabelServiceAppointmentTitle} icon-name="standard:service_appointment">
-        <lightning-layout horizontal-align="center">
-            <lightning-layout-item class="slds-text-align_center">
-              <dl>
-                  <dt>{labels.customlabelOpenServiceAppointments}: {numOpenSAs}</dt>
-              </dl>
-            </lightning-layout-item>
+        <lightning-layout>
+            <lightning-layout-item flexibility="auto" padding="around-small">
+              <div class="header-column">
+                  <p class = "field-title" title="OpenSAs">{labels.customlabelOpenServiceAppointments}</p>
+                  <p class = "field-value">{numOpenSAs}</p>
+              </div>
+          </lightning-layout-item>          
         </lightning-layout>
       </lightning-card>
     </template>

@@ -1,4 +1,7 @@
 <template>
+  <lightning-card icon-name="utility:chevronleft">
+    <h1 slot="title">{labels.customlabelBackTitle}</h1> 
+  </lightning-card>
     <lightning-card icon-name="standard:timesheet_entry">
       <h1 slot="title">{labels.customlabelTimeSheetEntryDetailsTitle}</h1>
       <template if:false={hasRecords}>

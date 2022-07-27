@@ -84,6 +84,7 @@
       <members>Overtime</members>
       <members>TimeSheetSummaryTitle</members>
       <members>TimeSheetSummarySubtitle</members>
+      <members>Back</members>
       <name>CustomLabel</name>
     </types>
     <types>       

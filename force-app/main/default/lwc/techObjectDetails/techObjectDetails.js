@@ -4,6 +4,7 @@ import { getListUi } from 'lightning/uiListApi';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import LOCALE from '@salesforce/i18n/locale';
 import CURRENCY from '@salesforce/i18n/currency';
+import backTitle from "@salesforce/label/c.Back";
 
 export default class TechObjectDetails extends LightningElement {
     @api objectName;
@@ -17,6 +18,7 @@ export default class TechObjectDetails extends LightningElement {
     @track records;
     @track fields;
     @track error;
+    @track backTitle=backTitle;
     locale=LOCALE;
     currency=CURRENCY;
     pageToken = null;
@@ -118,6 +120,7 @@ export default class TechObjectDetails extends LightningElement {
                 let value = item[col.fieldName];
                 let cell = {};
                 cell.fieldApiName = col.fieldName;
+                cell.label = col.label;
                 cell.value = value;
                 cell.editMode = false;
                 cell.getCellClass = "";

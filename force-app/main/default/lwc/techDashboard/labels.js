@@ -4,6 +4,7 @@ import OpportunitiesNone from "@salesforce/label/c.OpportunitiesNone";
 import ServiceAppointmentTitle from "@salesforce/label/c.ServiceAppointmentTitle";
 import ServiceAppointmentsNone from "@salesforce/label/c.ServiceAppointmentsNone";
 import ServiceAppointmentDetailsTitle from "@salesforce/label/c.SADetailsTitle";
+import DashboardTitle from "@salesforce/label/c.DashboardTitle";
 
 const customLabels = {
   OpportunitiesCreated,
@@ -11,7 +12,8 @@ const customLabels = {
   OpportunitiesNone,
   ServiceAppointmentTitle,
   ServiceAppointmentDetailsTitle,
-  ServiceAppointmentsNone
+  ServiceAppointmentsNone,
+  DashboardTitle
 };
 
 export default customLabels;

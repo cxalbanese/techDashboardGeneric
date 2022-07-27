@@ -304,4 +304,12 @@
         <shortDescription>Time Sheet Summary Subtitle</shortDescription>
         <value>Hours Entered This Week</value>
     </labels>
+    <labels>
+        <fullName>Back</fullName>
+        <categories>techDashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Navigation icon for back</shortDescription>
+        <value>Back</value>
+    </labels>
 </CustomLabels>

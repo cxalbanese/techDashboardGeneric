@@ -6,6 +6,7 @@ import { getRelatedListRecords } from 'lightning/uiRelatedListApi';
 import techId from '@salesforce/user/Id';
 import customlabelTimeSheetEntriesNone from "@salesforce/label/c.TimeSheetEntriesNone";
 import customlabelTimeSheetEntryDetailsTitle from "@salesforce/label/c.TimeSheetEntryDetailsTitle";
+import customlabelBackTitle from "@salesforce/label/c.Back";
 import TIMESHEET_OBJECT from '@salesforce/schema/TimeSheet';
 import TIMESHEETENTRY_OBJECT from '@salesforce/schema/TimeSheetEntry';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
@@ -26,7 +27,8 @@ export default class techTimeSheetListView extends LightningElement {
     endtimelabel;
     labels = {
         customlabelTimeSheetEntryDetailsTitle,
-        customlabelTimeSheetEntriesNone
+        customlabelTimeSheetEntriesNone,
+        customlabelBackTitle
     };
     @track tseData = [];
     @track errorData;

@@ -7,6 +7,7 @@ import customlabelWorkOrderDetailsTitle from "@salesforce/label/c.WorkOrderDetai
 import WORKORDER_OBJECT from '@salesforce/schema/WorkOrder';
 import WORKTYPE_OBJECT from '@salesforce/schema/WorkType';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
+import customlabelBackTitle from "@salesforce/label/c.Back";
 
 export default class techWOListView extends LightningElement {
     workordernumberlabel;
@@ -16,7 +17,8 @@ export default class techWOListView extends LightningElement {
     labels = {
         customlabelWorkOrderTitle,
         customlabelWorkOrderDetailsTitle,
-        customlabelWorkOrdersNone
+        customlabelWorkOrdersNone,
+        customlabelBackTitle
     };
     @track WOData = [];
     @track errorData;

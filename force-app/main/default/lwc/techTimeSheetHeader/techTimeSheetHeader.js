@@ -134,8 +134,10 @@ export default class techTimeSheetHeader extends LightningElement {
         let x = 0;
         for (const element of brDowHours) {
             let row={};
-            row.id = x++;
+            row.id = x;
             row.value = element;
+            row.label = this.labelArray[x];
+            x++;
             brRows.push(row);
           }
         return brRows;

@@ -1,0 +1,28 @@
+.c-container {
+    border: borderWidthThin solid #d8dde6;
+    margin: 10px spacingNone squareIconUtilityMedium spacingNone;
+}
+.header-column {
+    padding: spacingNone heightTappableSmall;
+}
+.field-title {
+    /* font-size: var(--lwc-sizeXxSmall); */
+    /* line-height: lineHeightHeading; */
+    color: var(--lwc-colorTextLabel);
+    /* margin-bottom: .25rem; */
+}
+.field-value {
+    /* font-size: var(--lwc-sizeXxxSmall); */
+    /* line-height: lineHeightHeading; */
+    color: var(--lwc-colorTextLink);
+    /* margin-bottom: .25rem; */
+}
+.custom-box {
+    background-color: #f4f6f9;
+}
+.custom-box1 {
+    text-align: center;
+    background-color: #f4f6f9;
+    padding: 1rem;
+    border: 1px solid #d8dde6;
+}

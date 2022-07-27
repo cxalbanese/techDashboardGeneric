@@ -2,15 +2,19 @@
     <template if:true={opptyData}>
       <lightning-card icon-name="standard:opportunity">
         <h1 slot="title">{labels.customlabelOpportunityTitle}</h1>
-        <lightning-layout horizontal-align="center">
-          <lightning-layout-item class="slds-text-align_center">
-            <dl>
-              <dt>{labels.customlabelOpportunitiesOpen}: {numOpenOppties}</dt> 
-            </dl>
-            <dl>
-               <dt>{labels.customlabelOpportunitiesWon}: {numWonOppties}</dt>
-            </dl>       
-          </lightning-layout-item>
+        <lightning-layout>
+          <lightning-layout-item flexibility="auto" padding="around-small">
+            <div class="header-column">
+                <p class = "field-title" title="OpenOpptys">{labels.customlabelOpportunitiesOpen}</p>
+                <p class = "field-value">{numOpenOppties}</p>
+            </div>
+        </lightning-layout-item>  
+        <lightning-layout-item flexibility="auto" padding="around-small">
+          <div class="header-column">
+              <p class = "field-title" title="WonOpptys">{labels.customlabelOpportunitiesWon}</p>
+              <p class = "field-value">{numWonOppties}</p>
+          </div>
+        </lightning-layout-item>   
         </lightning-layout>
       </lightning-card>
     </template>

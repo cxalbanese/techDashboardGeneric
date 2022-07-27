@@ -1,5 +1,5 @@
 <template>
-  <lightning-card title={labels.customlabelDashboardTitle} icon-name="action:user">
+  <lightning-card title={dashboardTitle} icon-name="action:user">
   </lightning-card>
   <c-tech-user-summary if:true={summary}></c-tech-user-summary>
   <c-tech-s-a-summary if:true={summary} onclick={handleSAClick}></c-tech-s-a-summary>
