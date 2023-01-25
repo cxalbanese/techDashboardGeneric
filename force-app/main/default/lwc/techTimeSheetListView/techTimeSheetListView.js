@@ -1,9 +1,8 @@
 import { api, LightningElement, track, wire } from 'lwc';
-import getTS from '@salesforce/apex/techDashboard.getTSHeader';
+import { gql, unstable_graphql } from 'lightning/uiGraphQLApi';
+// import getTS from '@salesforce/apex/techDashboard.getTSHeader';
 import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
-import { getRelatedListRecords } from 'lightning/uiRelatedListApi';
-
-import techId from '@salesforce/user/Id';
+//import techId from '@salesforce/user/Id';
 import customlabelTimeSheetEntriesNone from "@salesforce/label/c.TimeSheetEntriesNone";
 import customlabelTimeSheetEntryDetailsTitle from "@salesforce/label/c.TimeSheetEntryDetailsTitle";
 import customlabelBackTitle from "@salesforce/label/c.Back";
@@ -13,11 +12,6 @@ import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import TIMESHEETNUMBER_FIELD from '@salesforce/schema/TimeSheet.TimeSheetNumber';
 import STARTDATE_FIELD from '@salesforce/schema/TimeSheet.StartDate';
 import ENDDATE_FIELD from '@salesforce/schema/TimeSheet.EndDate';
-import DURATIONINMINUTES_FIELD from '@salesforce/schema/TimeSheetEntry.DurationInMinutes';
-import TYPE_FIELD from '@salesforce/schema/TimeSheetEntry.Type';
-import STARTTIME_FIELD from '@salesforce/schema/TimeSheetEntry.StartTime';
-import ENDTIME_FIELD from '@salesforce/schema/TimeSheetEntry.EndTime';
-import TIMESHEETENTRYNUMBER_FIELD from '@salesforce/schema/TimeSheetEntry.TimeSheetEntryNumber';
 
 export default class techTimeSheetListView extends LightningElement {
     timesheetnumberlabel;
@@ -25,6 +19,9 @@ export default class techTimeSheetListView extends LightningElement {
     typelabel;
     starttimelabel;
     endtimelabel;
+    timesheetnumber;
+    timesheetstartdate;
+    timesheetenddate;
     labels = {
         customlabelTimeSheetEntryDetailsTitle,
         customlabelTimeSheetEntriesNone,
@@ -32,51 +29,14 @@ export default class techTimeSheetListView extends LightningElement {
     };
     @track tseData = [];
     @track errorData;
-
-    @wire(getTS,{userId : techId})
-    dataRecord({data, error}){
-       if(data){
-            this.data = data;
-            this.tsRecordId = data.Id;
-       }
-       else if(error){
-           this.errorData = error;
-       }
-    }
+    get variables() {
+        return { 
+                 tsId : "1tsRO0000000cWyYAI",
+                 techSRId: "0HnRO0000000NYn0AM"};
+     }
 
     @wire(getRecord, { recordId: '$tsRecordId', fields: [TIMESHEETNUMBER_FIELD, STARTDATE_FIELD,ENDDATE_FIELD] })
     tsData;
-    get tsNumber() {
-        return getFieldValue(this.tsData.data, TIMESHEETNUMBER_FIELD);
-    }
-    get tsStartDate() {
-        return getFieldValue(this.tsData.data, STARTDATE_FIELD);
-    }
-    get tsEndDate() {
-        return getFieldValue(this.tsData.data, ENDDATE_FIELD);
-    }
-
-    @wire(getRelatedListRecords, {
-        parentRecordId: '$tsRecordId',
-        relatedListId: 'TimeSheetEntries',
-        fields: [
-            TIMESHEETENTRYNUMBER_FIELD.objectApiName+'.'+TIMESHEETENTRYNUMBER_FIELD.fieldApiName,
-            STARTTIME_FIELD.objectApiName+'.'+STARTTIME_FIELD.fieldApiName,
-            ENDTIME_FIELD.objectApiName+'.'+ENDTIME_FIELD.fieldApiName,
-            TYPE_FIELD.objectApiName+'.'+TYPE_FIELD.fieldApiName,
-            DURATIONINMINUTES_FIELD.objectApiName+'.'+DURATIONINMINUTES_FIELD.fieldApiName
-                ],
-        sortBy: [STARTTIME_FIELD.objectApiName+'.'+STARTTIME_FIELD.fieldApiName]
-    }) 
-    listInfo({ error, data }) {
-        if (data) {
-            this.tseData = data.records;
-            this.error = undefined;
-        } else if (error) {
-            this.error = error;
-            this.tseData = undefined;
-        }
-    }
 
     @wire(getObjectInfo, { objectApiName: TIMESHEET_OBJECT })
     tsInfo({ data, error }) {
@@ -93,8 +53,79 @@ export default class techTimeSheetListView extends LightningElement {
             this.endtimelabel=data.fields.EndTime.label;
         }
     } 
+    @wire(unstable_graphql, {
+        query: gql`
+        query TS ($techSRId: ID) {
+            uiapi {
+              query {
+                TimeSheet (where:{ and : [{ServiceResourceId:{eq: $techSRId}
+                  StartDate: {eq: { literal:THIS_WEEK}}}]},first:1 ) @category(name: "recordQuery") {
+                  edges {
+                    node {
+                      Id
+                      TimeSheetNumber @category(name: "StringValue") {
+                        value
+                      }
+                      StartDate @category(name: "DateValue") {
+                        value
+                      }
+                      EndDate @category(name: "DateValue") {
+                        value
+                      }
+                      TimeSheetEntries @category(name: "childRelationship") {
+                        edges {
+                          node {
+                            Id
+                            TimeSheetEntryNumber @category(name: "StringValue")  {
+                              value
+                            }
+                            Type @category(name: "PicklistValue") {
+                              value
+                            }
+                            StartTime @category(name: "DateTimeValue") {
+                              value
+                            }
+                            EndTime @category(name: "DateTimeValue") {
+                              value
+                            }
+                            DurationInMinutes @category(name: "DateValue") {
+                              value
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        `,
+    variables: '$variables',
+  })
+    functionTSEs ({ data, errors }) {
+        if (data) {
+            this.tseData=data.uiapi.query.TimeSheet.edges.map(edge => edge.node)[0]; 
+            this.timesheetnumber = this.tseData.TimeSheetNumber.value;
+            this.timesheetstartdate = this.tseData.StartDate.value;
+            this.timesheetenddate = this.tseData.EndDate.value;
+            this.tseData = this.tseData.TimeSheetEntries.edges.map(edge => edge.node);
+        }       
+        if (errors) {
+            this.error = errors;
+        }
+    } 
     
      get hasRecords() {
         return this.tseData && this.tseData.length > 0;
      }
+     get tsNumber() {
+        return this.timesheetnumber;
+    }
+    get tsStartDate() {
+        return this.timesheetstartdate;
+    }
+    get tsEndDate() {
+        return this.timesheetenddate;
+    }
 }

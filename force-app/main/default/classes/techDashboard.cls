@@ -16,12 +16,12 @@ public with sharing class techDashboard {
         string serviceResourceId = [select id from serviceresource where relatedrecordid = :userId].id;
         return [SELECT ID, Subject, AppointmentNumber, Status, ParentRecordId,SchedStartTime,SchedEndTime,Duration from ServiceAppointment where StatusCategory in ('Scheduled','Dispatched','InProgress') and Id in (select serviceappointmentid from assignedresource where serviceresourceid = :serviceResourceId) LIMIT :rowLimit];
     } 
-    //getWOInfo - returns list of work orders and associated worktype and worktype work_type_category for the assigned SA
+    //getWOInfo - returns list of work orders and associated worktype for the assigned SA
     @AuraEnabled(cacheable=true)
     public static List<WorkOrder> getWOInfo(string userId) {
         set<id> setParentRecordId = new set<id>();
         for(serviceappointment sa : getSAInfo(userId)) setParentRecordId.add(sa.ParentRecordId);
-        return [select id,workordernumber,worktypeid,worktype.name, startdate, enddate, subject, worktype.work_type_category__c from workorder where id in :setParentRecordId];
+        return [select id,workordernumber,worktypeid,worktype.name, startdate, enddate, subject from workorder where id in :setParentRecordId];
     } 
     //getTSInfo - returns map of time sheet entries by day of week as well as summary of regular, ot and burden
     @AuraEnabled(cacheable=true)

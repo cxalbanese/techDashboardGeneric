@@ -1,4 +1,4 @@
-<!-- not in use -->
+<!-- back in use with GraphQL -->
 <template>
     <lightning-card icon-name="standard:service_appointment">
       <h1 slot="title">{labels.customlabelServiceAppointmentTitle}</h1>
@@ -44,16 +44,16 @@
         <tbody> 
             <template for:each={saData} for:item="row">
                 <tr key={row.Id}>
-                    <td>{row.AppointmentNumber}</td>
-                    <td>{row.Subject}</td>
-                    <td>{row.Status}</td>
-                    <td><lightning-formatted-date-time value={row.SchedStartTime}         
+                    <td>{row.AppointmentNumber.value}</td>
+                    <td>{row.Subject.value}</td>
+                    <td>{row.Status.displayValue}</td>
+                    <td><lightning-formatted-date-time value={row.SchedStartTime.value}         
                         year="numeric"
                         month="numeric"
                         day="numeric"
                         hour="2-digit"
                         minute="2-digit"></lightning-formatted-date-time></td>
-                    <td><lightning-formatted-date-time value={row.SchedEndTime}        
+                    <td><lightning-formatted-date-time value={row.SchedEndTime.value}        
                         year="numeric"
                         month="numeric"
                         day="numeric"

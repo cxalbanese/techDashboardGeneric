@@ -36,7 +36,6 @@
         <name>StaticResource</name>
     </types>
     <types>
-        <members>WorkType.Work_Type_Category__c</members>
         <members>Opportunity.Created_by_me__c</members>
         <name>CustomField</name>
     </types> 
@@ -44,6 +43,7 @@
         <members>Opportunity.My_Open_Opportunities</members>
         <members>Opportunity.My_Open_or_Won_Opportunities</members> 
         <members>Opportunity.My_Won_Opportunities</members>  
+        <members>ServiceAppointment.Assigned_to_me_and_open</members>  
         <name>ListView</name> 
     </types> 
     <types>

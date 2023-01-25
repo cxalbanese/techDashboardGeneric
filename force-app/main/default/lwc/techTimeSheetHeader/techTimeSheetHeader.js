@@ -1,16 +1,7 @@
+debugger
 import { api, LightningElement,track,wire} from 'lwc';
-import getTS from '@salesforce/apex/techDashboard.getTSHeader';
-import techId from '@salesforce/user/Id';
-import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
-import { getRelatedListRecords } from 'lightning/uiRelatedListApi';
-import TIMESHEETNUMBER_FIELD from '@salesforce/schema/TimeSheet.TimeSheetNumber';
-import STARTDATE_FIELD from '@salesforce/schema/TimeSheet.StartDate';
-import ENDDATE_FIELD from '@salesforce/schema/TimeSheet.EndDate'
-import DURATIONINMINUTES_FIELD from '@salesforce/schema/TimeSheetEntry.DurationInMinutes';
-import TYPE_FIELD from '@salesforce/schema/TimeSheetEntry.Type';
-import STARTTIME_FIELD from '@salesforce/schema/TimeSheetEntry.StartTime';
-import ENDTIME_FIELD from '@salesforce/schema/TimeSheetEntry.EndTime';
-import TIMESHEETENTRYNUMBER_FIELD from '@salesforce/schema/TimeSheetEntry.TimeSheetEntryNumber';
+import { gql, unstable_graphql } from 'lightning/uiGraphQLApi';
+// import techId from '@salesforce/user/Id';
 import customlabelTitle from "@salesforce/label/c.TimeSheetSummaryTitle";
 import customlabelSubtitle from "@salesforce/label/c.TimeSheetSummarySubtitle";
 import customlabelTotal from "@salesforce/label/c.Total";
@@ -26,7 +17,6 @@ import customlabelSaturday from "@salesforce/label/c.Saturday";
 import customlabelSunday from "@salesforce/label/c.Sunday";
 
 export default class techTimeSheetHeader extends LightningElement {
-  debugger;
     @track tsRecordId='elmpo';
     @track records;
     @track dowHours = [];
@@ -44,54 +34,80 @@ export default class techTimeSheetHeader extends LightningElement {
         customlabelOvertime
     };
     labelArray=[customlabelMonday,customlabelTuesday,customlabelWednesday,customlabelThursday,customlabelFriday,customlabelSaturday,customlabelSunday];
-
-    @wire(getTS,{userId : techId})
-    dataRecord({data, error}){
-       if(data){
-            this.data = data;
-            this.tsRecordId = data.Id;
-       }
-       else if(error){
-           this.errorData = error;
-       }
-    }
-    
-    @wire(getRecord, { recordId: '$tsRecordId', fields: [TIMESHEETNUMBER_FIELD, STARTDATE_FIELD,ENDDATE_FIELD] })
-    tsData;
+    get variables() {
+        return { 
+                 tsId : "1tsRO0000000cWyYAI",
+                 techSRId: "0HnRO0000000NYn0AM"};
+     }
     get tsNumber() {
-        return getFieldValue(this.tsData.data, TIMESHEETNUMBER_FIELD);
+        return this.tseData.TimeSheetNumber.value;
     }
     get tsStartDate() {
-        return getFieldValue(this.tsData.data, STARTDATE_FIELD);
+        return this.tseData.StartDate.value;
     }
     get tsEndDate() {
-        return getFieldValue(this.tsData.data, ENDDATE_FIELD);
+        return this.tseData.EndDate.value;
     }
-
-    @wire(getRelatedListRecords, {
-        parentRecordId: '$tsRecordId',
-        relatedListId: 'TimeSheetEntries',
-        fields: [
-            TIMESHEETENTRYNUMBER_FIELD.objectApiName+'.'+TIMESHEETENTRYNUMBER_FIELD.fieldApiName,
-            STARTTIME_FIELD.objectApiName+'.'+STARTTIME_FIELD.fieldApiName,
-            ENDTIME_FIELD.objectApiName+'.'+ENDTIME_FIELD.fieldApiName,
-            TYPE_FIELD.objectApiName+'.'+TYPE_FIELD.fieldApiName,
-            DURATIONINMINUTES_FIELD.objectApiName+'.'+DURATIONINMINUTES_FIELD.fieldApiName
-                ],
-        sortBy: [STARTTIME_FIELD.objectApiName+'.'+STARTTIME_FIELD.fieldApiName]
-    }) 
-    listInfo({ error, data }) {
+    @wire(unstable_graphql, {
+        query: gql`
+        query TS ($techSRId: ID) {
+            uiapi {
+              query {
+                TimeSheet (where:{ and : [{ServiceResourceId:{eq: $techSRId}
+                  StartDate: {eq: { literal:THIS_WEEK}}}]},first:1 ) @category(name: "recordQuery") {
+                  edges {
+                    node {
+                      Id
+                      StartDate @category(name: "DateValue") {
+                        value
+                      }
+                      EndDate @category(name: "DateValue") {
+                        value
+                      }
+                      TimeSheetEntries @category(name: "childRelationship") {
+                        edges {
+                          node {
+                            Id
+                            TimeSheetEntryNumber @category(name: "StringValue")  {
+                              value
+                            }
+                            Type @category(name: "PicklistValue") {
+                              value
+                            }
+                            StartTime @category(name: "DateTimeValue") {
+                              value
+                            }
+                            EndTime @category(name: "DateTimeValue") {
+                              value
+                            }
+                            DurationInMinutes @category(name: "DateValue") {
+                              value
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        `,
+    variables: '$variables',
+  })
+    functionTSEs ({ data, errors }) {
         if (data) {
+            this.tseData=data.uiapi.query.TimeSheet.edges.map(edge => edge.node)[0]; 
             //create totals for each day of week
             //create totals for overtime, burden and straight based on timesheetentry.type field
-            this.records = data.records;
+            this.records = this.tseData.TimeSheetEntries.edges.map(edge=>edge.node);
             this.error = undefined;
             this.dowHours = this.initializeHours();
             for(const record in this.records) {
                 const val=this.records[record];
-               let mydate = new Date(val.fields.StartTime.value);
+               let mydate = new Date(val.StartTime.value);
                if(mydate) {
-                    let hours = val.fields.DurationInMinutes.value / 60;
+                    let hours = val.DurationInMinutes.value / 60;
                     let dow = mydate.getDay();
                     //Monday is the first day, shift everything by 1 and move Sunday to 6
                     if(dow == 0)
@@ -99,10 +115,10 @@ export default class techTimeSheetHeader extends LightningElement {
                     else 
                         dow--;
                     this.dowHours[dow] += hours;
-                    if(val.fields.Type.value=='Indirect') {
+                    if(val.Type.value=='Indirect') {
                         this.burden+= hours;
                     }
-                    else if (val.fields.Type.value == 'Overtime') {
+                    else if (val.Type.value == 'Overtime') {
                         this.overtime+= hours;
                     }
                     else {
@@ -112,14 +128,14 @@ export default class techTimeSheetHeader extends LightningElement {
                } 
             }
             this.rows = this.buildRows(this.dowHours); 
-        } else if (error) {
+        } else if (errors) {
             //if there is an error, we'll just return zeroes for all days of week
-            this.error = error;
+            this.error = errors;
             this.records = undefined;
             this.dowHours = this.initializeHours();
             this.rows = this.buildRows(this.dowHours);  
         }
-    }
+    } 
     get tseDataSize() {
         return this.records;
     }
@@ -143,3 +159,6 @@ export default class techTimeSheetHeader extends LightningElement {
         return brRows;
     }
 }
+
+
+  
