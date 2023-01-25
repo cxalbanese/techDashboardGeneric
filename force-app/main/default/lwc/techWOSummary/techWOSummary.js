@@ -1,7 +1,12 @@
 debugger;
 import { api, LightningElement, track, wire } from 'lwc';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import getWOList from '@salesforce/apex/techDashboard.getWOInfo';
+=======
+import { gql, unstable_graphql } from 'lightning/uiGraphQLApi';
+//import getWOList from '@salesforce/apex/techDashboard.getWOInfo';
+>>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
 =======
 import { gql, unstable_graphql } from 'lightning/uiGraphQLApi';
 //import getWOList from '@salesforce/apex/techDashboard.getWOInfo';
@@ -28,6 +33,7 @@ export default class getWOs extends LightningElement {
     customlabelContractWorkOrders,
     customlabelWorkOrderTitle
 };
+<<<<<<< HEAD
 <<<<<<< HEAD
     @track WOData = [];
     @track woMap = new Map();
@@ -92,6 +98,8 @@ export default class getWOs extends LightningElement {
            this.errorData = error;
        }
 =======
+=======
+>>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
     woData=[];
     saData=[];
     errorData;
@@ -102,6 +110,9 @@ export default class getWOs extends LightningElement {
     get variables() {
         return { 
                  statusCats : this.statusCategories};
+<<<<<<< HEAD
+>>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
+=======
 >>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
      }
     get variablesWO() {
@@ -272,14 +283,18 @@ export default class getWOs extends LightningElement {
         return(this.numWOCat('Installation'));
     }   
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     numWOCat(cat) {        
 =======
+=======
+>>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
     numWOCat(cat) {
 >>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
         let numCat=0;
         this.woData.forEach(WOFunction);
         function WOFunction(value) {
+<<<<<<< HEAD
 <<<<<<< HEAD
             if(value.WorkType && value.WorkType.Name) {
                 if(value.WorkType.Name==cat) {
@@ -287,10 +302,15 @@ export default class getWOs extends LightningElement {
                 }       
             }
 =======
+=======
+>>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
             if(value.WorkType && value.WorkType.Work_Type_Category__c) {
                 if(value.WorkType.Work_Type_Category__c.value==cat) {
                     numCat++;
             }   }    
+<<<<<<< HEAD
+>>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
+=======
 >>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
         }
         return numCat;

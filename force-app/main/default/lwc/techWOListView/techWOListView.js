@@ -19,9 +19,12 @@ export default class techWOListView extends LightningElement {
         customlabelBackTitle
     };
 <<<<<<< HEAD
+<<<<<<< HEAD
     @track WOData = [];
     @track WODataCleansed=[];
     @track errorData;
+=======
+>>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
 =======
 >>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
     @wire(getObjectInfo, { objectApiName: WORKORDER_OBJECT })
@@ -40,6 +43,7 @@ export default class techWOListView extends LightningElement {
             this.worktypenamelabel=data.fields.Name.label;
         }
     } 
+<<<<<<< HEAD
 <<<<<<< HEAD
     @wire(getWOList,{userId : techId})
     dataRecord({data, error}){
@@ -60,6 +64,8 @@ export default class techWOListView extends LightningElement {
             this.errorData = error;
         }
 =======
+=======
+>>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
     woData=[];
     saData=[];
     errorData;
@@ -149,6 +155,9 @@ functionWOs ({ data, errors }) {
     }
     if(errors) {
         this.woErrorData = errors;
+<<<<<<< HEAD
+>>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
+=======
 >>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
     }
 }
