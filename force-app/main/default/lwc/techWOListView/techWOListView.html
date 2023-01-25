@@ -11,12 +11,13 @@
         </div>
       </template>
       <template if:true={hasRecords}>
-      <table
+      <!-- <table
           class="slds-table slds-table_cell-buffer slds-table_fixed-layout slds-max-medium-table_stacked-horizontal slds-table_bordered"
-        > 
+        >  -->
+      <table  class="slds-table slds-table_cell-buffer slds-max-medium-table_stacked slds-table_bordered"
+      >  
         <thead>
-          <tr class="slds-line-height_reset">
-            <!-- <tr > -->
+          <tr class="slds-line-height_reset"> 
               <th
                 class="tableHeaders"
                 scope="col">
@@ -32,20 +33,31 @@
                 scope="col">
                 {worktypenamelabel}
             </th>
-            <th
-            class="tableHeaders"
-            scope="col">
-            {worktypecategorylabel}
-        </th>
         </tr>
         </thead>              
         <tbody> 
-            <template for:each={WOData} for:item="row">
+<<<<<<< HEAD
+<<<<<<< HEAD
+            <template for:each={WODataCleansed} for:item="row">
                 <tr key={row.Id}>
                     <td data-label={workordernumberlabel}>{row.WorkOrderNumber}</td>
                     <td data-label={subjectlabel}>{row.Subject}</td>
                     <td data-label={worktypenamelabel}>{row.WorkType.Name}</td>
-                    <td data-label={worktypecategorylabel}>{row.WorkType.Work_Type_Category__c}</td>
+=======
+            <template for:each={woData} for:item="row">
+                <tr key={row.Id}>
+=======
+            <template for:each={woData} for:item="row">
+                <tr key={row.Id}>
+>>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
+                    <td data-label={workordernumberlabel}>{row.WorkOrderNumber.value}</td>
+                    <td data-label={subjectlabel}>{row.Subject.value}</td>
+                    <td data-label={worktypenamelabel}>{row.WorkType.Name.value}</td>
+                    <td data-label={worktypecategorylabel}>{row.WorkType.Work_Type_Category__c.value}</td>
+<<<<<<< HEAD
+>>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
+=======
+>>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
                 </tr>
               </template>            
         </tbody> 

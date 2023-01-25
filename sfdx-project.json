@@ -5,7 +5,7 @@
       "default": true
     }
   ],
-  "name": "techDashboardlaptop",
+  "name": "techDashboard generic",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "52.0"

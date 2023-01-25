@@ -4,8 +4,8 @@
     <isExposed>true</isExposed>
     <targets>
         <target>lightning__RecordAction</target>
-        <target>lightning__Tab</target>
-        <target>lightning__GlobalAction</target>
+        <target>lightning__Tab</target> <!--
+        <target>lightning__GlobalAction</target> -->
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__RecordAction">

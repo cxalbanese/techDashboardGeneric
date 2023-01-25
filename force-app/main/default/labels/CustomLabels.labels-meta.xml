@@ -54,7 +54,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Work Order Section Title</shortDescription>
-        <value>Open Work Orders</value>
+        <value>Work Orders by Work Type</value>
     </labels>
     <labels>
         <fullName>ContractWorkOrders</fullName>
@@ -62,7 +62,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Contract Work Order</shortDescription>
-        <value>Contract</value>
+        <value>Battery</value>
     </labels>    
     <labels>
         <fullName>ProjectWorkOrders</fullName>
@@ -70,7 +70,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Project Work Order</shortDescription>
-        <value>Project</value>
+        <value>Maintenance</value>
     </labels>    
     <labels>
         <fullName>SpotWorkOrders</fullName>
@@ -78,7 +78,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Spot Work Order</shortDescription>
-        <value>Spot</value>
+        <value>Inspection</value>
     </labels>    
     <labels>
         <fullName>UserLastLocationDate</fullName>

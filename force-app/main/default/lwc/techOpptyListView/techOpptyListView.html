@@ -1,64 +1,54 @@
-<!-- not in use -->
+<!-- back in use due to gql -->
 <template>
   <lightning-card icon-name="standard:opportunity">
     <h1 slot="title">{labels.customlabelOpportunityDetailsTitle}</h1>
     <div class="slds-text-title_caps slds-var-p-around_small">{labels.customlabelOpportunitiesCreated}</div>
-    <template if:false={hasRecords}>
+    <template if:false={opptyData}>
       <div class="slds-var-p-around_small">
         {labels.customlabelOpportunitiesNone}
       </div>
     </template>
-    <template if:true={hasRecords}>
+    <template if:true={opptyData}>
       <table
         class="slds-table slds-table_cell-buffer slds-table_fixed-layout slds-max-medium-table_stacked-horizontal slds-table_bordered"
       >
       <thead>
         <tr class="slds-line-height_reset">
-          <template for:each={columns} for:item="col" for:index="colIndex">
-            <th
-              id={col.fieldName}
-              data-id={col.fieldName}
-              key={col.label}
-              class="tableHeaders"
-              scope="col"
-            >
-              {col.label}
+            <th>
+              Opportunity Name
+            </th>            
+            <th>
+              Stage
             </th>
-          </template>
+            <th>
+              Close Date
+            </th>
+            <th>
+              Amount
+            </th>
         </tr>
       </thead>              
       <tbody>
-        <template for:each={rows} for:item="row" for:index="rowIndex">
-          <tr key={row.Id} data-record={row.Id}>
-            <template
-              for:each={row.cells}
-              for:item="cell"
-              for:index="cellIndex"
-            >
-              <td
-                key={cell.fieldApiName}
-                data-field-api-name={cell.fieldApiName}
-                class={cell.getCellClass}
-              >
-              <template if:true={cell.isCurrency}>
-                <div>
-                      <lightning-formatted-number value={cell.value} format-style="currency" currency-code={currency} currency-display-as="symbol" minimum-fraction-digits="0" ></lightning-formatted-number>
-                </div>
-                </template>
-              <template if:true={cell.isDateTime}>
-                    <div><lightning-formatted-date-time value={cell.value}></lightning-formatted-date-time>
-                    </div>
-              </template>
-              <template if:true={cell.isDate}>
-                <div><lightning-formatted-date-time value={cell.value}></lightning-formatted-date-time>
-                </div>
-          </template>                     
-                <template if:true={cell.isAllOtherTypes}>
-                <div>{cell.value}
-                </div>
-                </template>
+        <template for:each={opptyData} for:item="row" for:index="rowIndex">
+          <tr key={row.Id.value} data-record={row.Id.value}>
+
+              <td>
+                {row.Name.value} 
               </td>
-            </template>
+              <td>
+                {row.StageName.displayValue}
+              </td>
+              <td>
+                <div>
+                  <lightning-formatted-date-time 
+                    value={row.CloseDate.value}></lightning-formatted-date-time></div>
+              </td>
+              <td>
+                <div>
+                  <lightning-formatted-number 
+                    value={row.Amount.value} format-style="currency" currency-code={currency} currency-display-as="symbol" minimum-fraction-digits="0" ></lightning-formatted-number>
+                </div>
+              </td>
           </tr>
         </template>
       </tbody>

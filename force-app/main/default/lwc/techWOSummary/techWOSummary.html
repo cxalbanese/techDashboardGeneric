@@ -1,24 +1,32 @@
 <template>
-    <template if:true={WOData}>
+    <template if:true={woDataFound}>
       <lightning-card icon-name="standard:work_order">
         <h1 slot="title">{labels.customlabelWorkOrderTitle}</h1>
+        <lightning-layout>
+            <lightning-layout-item flexibility="auto" padding="around-small">
+              <div class="header-column">
+                <p class = "field-title" title="TotalWO">Open Work Orders</p>
+                  <p class="field-value">{numWOs}</p>
+              </div>
+          </lightning-layout-item>  
+      </lightning-layout>
           <lightning-layout>
             <lightning-layout-item flexibility="auto" padding="around-small">
               <div class="header-column">
-                <p class = "field-title" title="ContractWOs">{labels.customlabelContractWorkOrders}</p>
-                  <p class="field-value">{numContractWOs}</p>
+                <p class = "field-title" title="wt1WOs">{wt1FieldLabel}</p>
+                  <p class="field-value">{wt1Num}</p>
               </div>
           </lightning-layout-item> 
-          <lightning-layout-item flexibility="auto" padding="around-small">
+          <lightning-layout-item flexibility="auto" padding="around-small" if:true={wt2Available}>
             <div class="header-column">
-              <p class = "field-title" title="ProjectWOs">{labels.customlabelProjectWorkOrders}</p>
-                <p class="field-value">{numProjectWOs}</p>
+              <p class = "field-title" title="wt2WOs">{wt2FieldLabel}</p>
+                <p class="field-value">{wt2Num}</p>
             </div>
         </lightning-layout-item>         
-        <lightning-layout-item flexibility="auto" padding="around-small">
+        <lightning-layout-item flexibility="auto" padding="around-small" if:true={wt3Available}>
           <div class="header-column">
-            <p class = "field-title" title="SpotWOs">{labels.customlabelSpotWorkOrders}</p>
-              <p class="field-value">{numSpotWOs}</p>
+            <p class = "field-title" title="SpotWOs">{wt3FieldLabel}</p>
+              <p class="field-value">{wt3Num}</p>
           </div>
         </lightning-layout-item>     
         </lightning-layout>
