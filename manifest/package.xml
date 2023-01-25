@@ -36,7 +36,6 @@
         <name>StaticResource</name>
     </types>
     <types>
-        <members>WorkType.Work_Type_Category__c</members>
         <members>Opportunity.Created_by_me__c</members>
         <name>CustomField</name>
     </types> 

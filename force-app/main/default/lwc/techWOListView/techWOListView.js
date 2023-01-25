@@ -13,7 +13,6 @@ export default class techWOListView extends LightningElement {
     workordernumberlabel;
     subjectlabel;
     worktypenamelabel;
-    worktypecategorylabel;
     labels = {
         customlabelWorkOrderTitle,
         customlabelWorkOrderDetailsTitle,
@@ -21,6 +20,7 @@ export default class techWOListView extends LightningElement {
         customlabelBackTitle
     };
     @track WOData = [];
+    @track WODataCleansed=[];
     @track errorData;
     @wire(getObjectInfo, { objectApiName: WORKORDER_OBJECT })
     woInfo({ data, error }) {
@@ -36,18 +36,26 @@ export default class techWOListView extends LightningElement {
 
         if (data) {
             this.worktypenamelabel=data.fields.Name.label;
-            this.worktypecategorylabel=data.fields.Work_Type_Category__c.label;
         }
     } 
     @wire(getWOList,{userId : techId})
     dataRecord({data, error}){
-       if(data){
+        if(data){
             this.WOData = data;
-            console.log('wo data size listview ' + this.WOData.length);
-       }
-       else if(error){
-           this.errorData = error;
-       }
+            //loop through the data and if there is no work type name set to blank
+            this.WOData.forEach(wo =>
+                {
+                    let woRow = wo;                   
+                    if(!woRow.WorkType)  {
+                        let WorkType = {Name: ''};
+                        woRow = { ...woRow, WorkType };
+                    }
+                    this.WODataCleansed.push(woRow);
+                } )
+        }
+        else if(error){
+            this.errorData = error;
+        }
     }
      
      get hasRecords() {

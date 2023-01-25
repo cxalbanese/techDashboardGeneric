@@ -57,6 +57,20 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
+        <actionName>GeneratePdf</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>GeneratePdf</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>GeneratePdf</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
         <actionName>List</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -114,11 +128,14 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>SDO_Service_Appointment_Default</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -127,17 +144,29 @@
         <type>Default</type>
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
-    <enableFeeds>false</enableFeeds>
+    <enableFeeds>true</enableFeeds>
     <externalSharingModel>ReadWrite</externalSharingModel>
     <searchLayouts>
-        <customTabListAdditionalFields>EstimatedDuration</customTabListAdditionalFields>
-        <customTabListAdditionalFields>DurationType</customTabListAdditionalFields>
-        <lookupDialogsAdditionalFields>EstimatedDuration</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>DurationType</lookupDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>EstimatedDuration</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>DurationType</lookupPhoneDialogsAdditionalFields>
-        <searchResultsAdditionalFields>EstimatedDuration</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>DurationType</searchResultsAdditionalFields>
+        <customTabListAdditionalFields>ParentRecord</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ParentRecordType</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ArrivalWindowStartTime</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ArrivalWindowEndTime</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>ParentRecord</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ParentRecordType</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Status</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ArrivalWindowStartTime</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ArrivalWindowEndTime</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ParentRecord</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ParentRecordType</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Status</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ArrivalWindowStartTime</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ArrivalWindowEndTime</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>ParentRecord</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ParentRecordType</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ArrivalWindowStartTime</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ArrivalWindowEndTime</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
 </CustomObject>
