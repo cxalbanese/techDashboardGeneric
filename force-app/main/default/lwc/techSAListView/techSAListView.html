@@ -1,0 +1,68 @@
+<!-- back in use with GraphQL -->
+<template>
+    <lightning-card icon-name="standard:service_appointment">
+      <h1 slot="title">{labels.customlabelServiceAppointmentTitle}</h1>
+      <div class="slds-text-title_caps slds-var-p-around_small">{labels.customlabelSADetailsTitle}</div>
+      <template if:false={hasRecords}>
+        <div class="slds-var-p-around_small">
+          {labels.customlabelServiceAppointmentsNone}
+        </div>
+      </template>
+      <template if:true={hasRecords}>
+        <table
+          class="slds-table slds-table_cell-buffer slds-table_fixed-layout slds-max-medium-table_stacked-horizontal slds-table_bordered"
+        >
+        <thead>
+          <tr class="slds-line-height_reset">
+            <th
+                class="tableHeaders"
+                scope="col">
+                {appointmentnumberlabel}
+            </th>            
+            <th
+                class="tableHeaders"
+                scope="col">
+                {subjectlabel}
+            </th>            
+            <th
+                class="tableHeaders"
+                scope="col">
+                {statuslabel}
+            </th>
+            <th
+                class="tableHeaders"
+                scope="col">
+                {schedstarttimelabel}
+            </th>
+            <th
+                class="tableHeaders"
+                scope="col">
+                {schedendtimelabel}
+            </th>
+        </tr>
+        </thead>              
+        <tbody> 
+            <template for:each={saData} for:item="row">
+                <tr key={row.Id}>
+                    <td>{row.AppointmentNumber.value}</td>
+                    <td>{row.Subject.value}</td>
+                    <td>{row.Status.displayValue}</td>
+                    <td><lightning-formatted-date-time value={row.SchedStartTime.value}         
+                        year="numeric"
+                        month="numeric"
+                        day="numeric"
+                        hour="2-digit"
+                        minute="2-digit"></lightning-formatted-date-time></td>
+                    <td><lightning-formatted-date-time value={row.SchedEndTime.value}        
+                        year="numeric"
+                        month="numeric"
+                        day="numeric"
+                        hour="2-digit"
+                        minute="2-digit"></lightning-formatted-date-time></td>
+                </tr>
+              </template>            
+        </tbody> 
+        </table>
+      </template>
+      </lightning-card>
+    </template>

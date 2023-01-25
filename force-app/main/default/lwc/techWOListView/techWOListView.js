@@ -1,6 +1,5 @@
 import { api, LightningElement, track, wire } from 'lwc';
-import getWOList from '@salesforce/apex/techDashboard.getWOInfo';
-import techId from '@salesforce/user/Id';
+import { gql, unstable_graphql } from 'lightning/uiGraphQLApi';
 import customlabelWorkOrderTitle from "@salesforce/label/c.WorkOrderTitle";
 import customlabelWorkOrdersNone from "@salesforce/label/c.WorkOrdersNone";
 import customlabelWorkOrderDetailsTitle from "@salesforce/label/c.WorkOrderDetailsTitle";
@@ -19,9 +18,12 @@ export default class techWOListView extends LightningElement {
         customlabelWorkOrdersNone,
         customlabelBackTitle
     };
+<<<<<<< HEAD
     @track WOData = [];
     @track WODataCleansed=[];
     @track errorData;
+=======
+>>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
     @wire(getObjectInfo, { objectApiName: WORKORDER_OBJECT })
     woInfo({ data, error }) {
         console.log('insdie of work order labels data ' + data);
@@ -38,6 +40,7 @@ export default class techWOListView extends LightningElement {
             this.worktypenamelabel=data.fields.Name.label;
         }
     } 
+<<<<<<< HEAD
     @wire(getWOList,{userId : techId})
     dataRecord({data, error}){
         if(data){
@@ -56,10 +59,101 @@ export default class techWOListView extends LightningElement {
         else if(error){
             this.errorData = error;
         }
+=======
+    woData=[];
+    saData=[];
+    errorData;
+    woErrorData;
+    statusCategories=["Scheduled","Dispatched"]
+    uniqueWOIds=[];
+    uniqueWOs=[];
+    get variables() {
+        return { 
+                 statusCats : this.statusCategories};
+     }
+    get variablesWO() {
+      return {
+        woIds: this.saData
+      };
     }
-     
+     @wire(unstable_graphql, {
+      query: gql`
+      query ServiceAppointments ($statusCats: [Picklist]) {
+          uiapi {
+            query {
+              ServiceAppointment (
+                scope: ASSIGNEDTOME,
+                where: {StatusCategory: {in: $statusCats}}
+              ) 
+              @category(name: "recordQuery") {
+                edges {
+                  node {
+                    Id
+                    ParentRecordId @category(name: "StringValue") {
+                      value
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `,
+  variables: '$variables',
+})
+  functionSAs ({ data, errors }) {
+      if (data) {
+            this.saData =data.uiapi.query.ServiceAppointment.edges.map(edge => edge.node.ParentRecordId.value); 
+             console.log('saData - ' + this.saData.length);
+        }
+      if(errors) {
+          this.errorData = errors;
+      }
+  } 
+  @wire(unstable_graphql, {
+    query: gql`
+    query WorkOrders($woIds: [ID]) {
+      uiapi {
+        query {
+          WorkOrder(where: {Id: {in: $woIds}}) @category(name: "recordQuery") {
+            edges {
+              node {
+                Id
+                WorkOrderNumber @category(name: "StringValue") {
+                  value
+                }
+                Subject @category(name: "StringValue") {
+                    value
+                }
+                WorkType @category(name: "parentRelationship") {
+                  Id
+                  Name @category(name: "StringValue") {
+                    value
+                  }
+                  Work_Type_Category__c @category(name: "PicklistValue") {
+                    value
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    `,
+variables: '$variablesWO',
+})
+functionWOs ({ data, errors }) {
+    if (data) {
+          this.woData =data.uiapi.query.WorkOrder.edges.map(edge => edge.node); 
+    }
+    if(errors) {
+        this.woErrorData = errors;
+>>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
+    }
+}
      get hasRecords() {
-        return this.WOData && this.WOData.length > 0;
+        return this.woData && this.woData.length > 0;
      }
      get labelworkordernumber() {
         return this.workordernumberlabel;

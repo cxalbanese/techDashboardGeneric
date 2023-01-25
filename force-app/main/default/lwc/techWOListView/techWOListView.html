@@ -36,11 +36,20 @@
         </tr>
         </thead>              
         <tbody> 
+<<<<<<< HEAD
             <template for:each={WODataCleansed} for:item="row">
                 <tr key={row.Id}>
                     <td data-label={workordernumberlabel}>{row.WorkOrderNumber}</td>
                     <td data-label={subjectlabel}>{row.Subject}</td>
                     <td data-label={worktypenamelabel}>{row.WorkType.Name}</td>
+=======
+            <template for:each={woData} for:item="row">
+                <tr key={row.Id}>
+                    <td data-label={workordernumberlabel}>{row.WorkOrderNumber.value}</td>
+                    <td data-label={subjectlabel}>{row.Subject.value}</td>
+                    <td data-label={worktypenamelabel}>{row.WorkType.Name.value}</td>
+                    <td data-label={worktypecategorylabel}>{row.WorkType.Work_Type_Category__c.value}</td>
+>>>>>>> d3534fafaa629d4b567466805d1a7cecbde6ef44
                 </tr>
               </template>            
         </tbody> 

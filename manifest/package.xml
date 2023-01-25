@@ -43,6 +43,7 @@
         <members>Opportunity.My_Open_Opportunities</members>
         <members>Opportunity.My_Open_or_Won_Opportunities</members> 
         <members>Opportunity.My_Won_Opportunities</members>  
+        <members>ServiceAppointment.Assigned_to_me_and_open</members>  
         <name>ListView</name> 
     </types> 
     <types>
